@@ -1,0 +1,11 @@
+id,timestamp,level,message
+TRACE-001,2026-07-15T09:12:02,INFO,"Automatic reconnection attempt started."
+TRACE-002,2026-07-15T09:12:14,WARN,"Reconnection completed in 12.1 seconds and exceeded the 10-second limit."
+TRACE-003,2026-07-17T11:30:04,INFO,"Bluetooth subsystem available; reconnection request submitted."
+TRACE-004,2026-07-17T11:30:12,WARN,"Device service discovery response was delayed."
+TRACE-005,2026-07-17T11:30:19,ERROR,"Reconnection completed in 15.4 seconds and exceeded the 10-second limit."
+TRACE-006,2026-07-21T08:45:03,INFO,"Vehicle ignition event received."
+TRACE-007,2026-07-21T08:45:12,WARN,"Reconnection request remained in the connection queue for 8.9 seconds."
+TRACE-008,2026-07-21T08:45:21,ERROR,"Phone reconnected in 18.0 seconds and exceeded the 10-second limit."
+TRACE-009,2026-07-22T14:06:10,ERROR,"Reconnection completion diagnostic event was not recorded."
+TRACE-010,2026-07-24T16:20:17,ERROR,"Media audio profile restoration failed after the Bluetooth connection was established."

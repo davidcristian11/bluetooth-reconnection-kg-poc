@@ -1,0 +1,6 @@
+id,name,description,version
+COMP-001,Vehicle State Adapter,"Receives vehicle ignition and power-state events and makes them available to the connectivity software.",1.2.0
+COMP-002,Bluetooth Connection Manager,"Controls automatic Bluetooth reconnection attempts, retry behavior, connection timing, and cancellation.",2.3.0
+COMP-003,Pairing Data Store,"Stores and retrieves pairing credentials and metadata for previously paired Bluetooth devices.",1.4.1
+COMP-004,Bluetooth Profile Service,"Restores supported Bluetooth profiles such as phone audio and media audio after a connection is established.",3.1.0
+COMP-005,Connectivity Diagnostics Service,"Records diagnostic events and timing information for Bluetooth connection attempts.",1.2.0

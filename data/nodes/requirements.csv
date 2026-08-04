@@ -1,0 +1,8 @@
+id,title,description,priority,status
+REQ-001,Automatic reconnection after ignition,"The system shall automatically reconnect a previously paired phone after the vehicle ignition is switched on.",High,Approved
+REQ-002,Reconnection within ten seconds,"The system shall complete Bluetooth phone reconnection within 10 seconds after the Bluetooth subsystem becomes available.",Critical,Approved
+REQ-003,Reuse stored pairing information,"The system shall use stored pairing information to reconnect the phone without requiring the user to repeat the pairing process.",High,Approved
+REQ-004,Transient reconnection retry,"The system shall retry the Bluetooth connection once when the first reconnection attempt fails because of a transient communication error.",Medium,Approved
+REQ-005,Restore supported Bluetooth profiles,"After reconnection, the system shall restore the supported phone and media audio profiles.",High,Approved
+REQ-006,Record reconnection diagnostics,"The system shall record diagnostic events for the start, completion, failure, and duration of each reconnection attempt.",Medium,Approved
+REQ-007,Handle Bluetooth-disabled phones,"The system shall stop automatic reconnection attempts when Bluetooth is disabled on the paired phone.",Low,Draft

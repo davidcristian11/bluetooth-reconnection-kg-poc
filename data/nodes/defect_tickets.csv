@@ -1,0 +1,4 @@
+id,title,description,status,severity,createdDate
+DEF-001,Delayed Bluetooth reconnection after ignition,"Bluetooth reconnection sometimes exceeds the 10-second requirement because the connection request remains queued longer than expected.",Open,Critical,2026-07-17
+DEF-002,Missing reconnection completion diagnostic event,"The diagnostic service does not always record the completion event for a successful reconnection attempt.",In Progress,Medium,2026-07-22
+DEF-003,Media audio profile not restored,"The phone reconnects successfully but the media audio profile is not restored in some vehicle executions.",Resolved,High,2026-07-24
