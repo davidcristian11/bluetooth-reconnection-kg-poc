@@ -52,9 +52,9 @@ Represents one specific execution of a test.
 ### Properties
 
 * `id` — unique identifier
-* `executionDate` — date and time of execution
+* `executionDate` — date of execution
 * `environment` — `SiL`, `HiL`, or `Vehicle`
-* `result` — `Passed` or `Failed`
+* `result` — `PASS` or `FAIL`
 * `reconnectionTimeSeconds` — measured reconnection time
 * `softwareVersion` — software version tested
 
@@ -66,7 +66,7 @@ Represents diagnostic information produced during a test execution.
 
 * `id` — unique identifier
 * `timestamp` — time when the trace event occurred
-* `level` — message level, such as `Info`, `Warning`, or `Error`
+* `level` — message level, such as `INFO`, `WARN`, or `ERROR`
 * `message` — diagnostic message
 
 ## DefectTicket

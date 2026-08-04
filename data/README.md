@@ -1,6 +1,6 @@
 # Synthetic Dataset
 
-This directory contains the syntetic dataset used by the Bluetooth Reconnection Knowledge Graph PoC.
+This directory contains the synthetic dataset used by the Bluetooth Reconnection Knowledge Graph PoC.
 
 ## Directory structure
 
