@@ -57,7 +57,7 @@ In Neo4j:
 Example:
 
 ```text
-(:Test {testId: "TEST-BT-004"})
+(:Test {id: "TEST-004"})
 ```
 
 This represents:
