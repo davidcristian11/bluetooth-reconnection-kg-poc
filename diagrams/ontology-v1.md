@@ -15,7 +15,7 @@ flowchart LR
     Test -->|VERIFIES| Requirement
     TestExecution -->|EXECUTION_OF| Test
     TestExecution -->|PRODUCED| TestTrace
-    DefectTicket -->|RELATES_TO| TestExecution
+    TestExecution -->|HAS_DEFECT_TICKET| DefectTicket
     DefectTicket -->|AFFECTS| SoftwareComponent
 ```
 
@@ -36,7 +36,7 @@ flowchart LR
 * `Test VERIFIES Requirement`
 * `TestExecution EXECUTION_OF Test`
 * `TestExecution PRODUCED TestTrace`
-* `DefectTicket RELATES_TO TestExecution`
+* `TestExecution HAS_DEFECT_TICKET DefectTicket`
 * `DefectTicket AFFECTS SoftwareComponent`
 
 The arrow direction represents how each relationship will be stored in the knowledge graph.
