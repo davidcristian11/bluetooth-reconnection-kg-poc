@@ -21,4 +21,4 @@ venv/
 .env.*
 !.env.example
 
-cypher/exercise-cypher.chypher
+cypher/exercise-cypher.cypher
