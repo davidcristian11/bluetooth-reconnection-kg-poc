@@ -1,0 +1,34 @@
+contractVersion: "1.0"
+
+dataset:
+  name: test_execution_produces_trace
+  kind: relationship
+  relationshipType: PRODUCES
+  path: data/relationships/test_execution_produces_trace.csv
+  format: csv
+  delimiter: ","
+  encoding: utf-8
+  headerRequired: true
+  additionalColumnsAllowed: false
+
+primaryKey:
+  - executionId
+  - traceId
+
+columns:
+  executionId:
+    type: string
+    required: true
+    pattern: "^EXEC-[0-9]{3}$"
+    references:
+      dataset: test_executions
+      column: id
+
+  traceId:
+    type: string
+    required: true
+    unique: true
+    pattern: "^TRACE-[0-9]{3}$"
+    references:
+      dataset: test_traces
+      column: id
