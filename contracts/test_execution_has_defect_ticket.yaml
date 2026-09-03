@@ -1,0 +1,33 @@
+contractVersion: "1.0"
+
+dataset:
+  name: test_execution_has_defect_ticket
+  kind: relationship
+  relationshipType: HAS_DEFECT_TICKET
+  path: data/relationships/test_execution_has_defect_ticket.csv
+  format: csv
+  delimiter: ","
+  encoding: utf-8
+  headerRequired: true
+  additionalColumnsAllowed: false
+
+primaryKey:
+  - executionId
+  - defectTicketId
+
+columns:
+  executionId:
+    type: string
+    required: true
+    pattern: "^EXEC-[0-9]{3}$"
+    references:
+      dataset: test_executions
+      column: id
+
+  defectTicketId:
+    type: string
+    required: true
+    pattern: "^DEF-[0-9]{3}$"
+    references:
+      dataset: defect_tickets
+      column: id

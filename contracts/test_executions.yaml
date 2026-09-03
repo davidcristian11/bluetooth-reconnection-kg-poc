@@ -1,0 +1,72 @@
+contractVersion: "1.0"
+
+dataset:
+  name: test_executions
+  entity: TestExecution
+  path: data/nodes/test_executions.csv
+  format: csv
+  delimiter: ","
+  encoding: utf-8
+  headerRequired: true
+  additionalColumnsAllowed: false
+
+primaryKey:
+  - id
+
+columns:
+  id:
+    type: string
+    required: true
+    unique: true
+    pattern: "^EXEC-[0-9]{3}$"
+    description: Stable identifier for one test execution.
+
+  executionDate:
+    type: date
+    required: true
+    format: "%Y-%m-%d"
+    notFuture: true
+    description: Calendar date on which the test was executed.
+
+  environment:
+    type: string
+    required: true
+    allowedValues:
+      - SiL
+      - HiL
+      - Vehicle
+
+  result:
+    type: string
+    required: true
+    allowedValues:
+      - PASS
+      - FAIL
+
+  reconnectionTimeSeconds:
+    type: float
+    required: false
+    minimum: 0
+    description: >
+      Measured reconnection duration. It may be empty when
+      reconnection did not complete or no valid measurement exists.
+
+  softwareVersion:
+    type: string
+    required: true
+    pattern: "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    description: >
+      Version of the complete software build under test,
+      not the version of one individual component.
+
+crossDatasetRules:
+  - name: execution_has_exactly_one_test
+    description: >
+      Every TestExecution must appear exactly once as executionId
+      in test_execution_execution_of_test.csv.
+
+  - name: threshold_violation_means_failure
+    description: >
+      If an execution is linked to a Test that verifies REQ-002
+      and reconnectionTimeSeconds is greater than 10 seconds,
+      its result must be FAIL.

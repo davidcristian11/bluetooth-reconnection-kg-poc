@@ -1,0 +1,52 @@
+contractVersion: "1.0"
+
+dataset:
+  name: test_traces
+  entity: TestTrace
+  path: data/nodes/test_traces.csv
+  format: csv
+  delimiter: ","
+  encoding: utf-8
+  headerRequired: true
+  additionalColumnsAllowed: false
+
+primaryKey:
+  - id
+
+columns:
+  id:
+    type: string
+    required: true
+    unique: true
+    pattern: "^TRACE-[0-9]{3}$"
+
+  timestamp:
+    type: datetime
+    required: true
+    format: "%Y-%m-%dT%H:%M:%S"
+    timezoneRequired: false
+    assumedTimezone: UTC
+
+  level:
+    type: string
+    required: true
+    allowedValues:
+      - INFO
+      - WARN
+      - ERROR
+
+  message:
+    type: string
+    required: true
+    minimumLength: 1
+
+crossDatasetRules:
+  - name: trace_has_exactly_one_execution
+    description: >
+      Every TestTrace must appear exactly once as traceId
+      in test_execution_produces_trace.csv.
+
+  - name: trace_matches_execution_date
+    description: >
+      For the current PoC, the calendar date of a trace timestamp
+      must match the executionDate of its producing TestExecution.

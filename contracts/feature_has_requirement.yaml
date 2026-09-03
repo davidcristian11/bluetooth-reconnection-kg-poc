@@ -1,0 +1,33 @@
+contractVersion: "1.0"
+
+dataset:
+  name: feature_has_requirement
+  kind: relationship
+  relationshipType: HAS_REQUIREMENT
+  path: data/relationships/feature_has_requirement.csv
+  format: csv
+  delimiter: ","
+  encoding: utf-8
+  headerRequired: true
+  additionalColumnsAllowed: false
+
+primaryKey:
+  - featureId
+  - requirementId
+
+columns:
+  featureId:
+    type: string
+    required: true
+    pattern: "^FEAT-[0-9]{3}$"
+    references:
+      dataset: features
+      column: id
+
+  requirementId:
+    type: string
+    required: true
+    pattern: "^REQ-[0-9]{3}$"
+    references:
+      dataset: requirements
+      column: id

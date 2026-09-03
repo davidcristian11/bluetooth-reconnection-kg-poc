@@ -20,9 +20,8 @@ async def main():
             neo4j_client=neo4j,
         )
 
-        print(
-            "Ontology-aware Knowledge Graph querying"
-        )
+        print("Ontology-aware Knowledge Graph querying")
+        print(f"Configured model: {llm.model}")
         print("Type 'exit' to stop.")
 
         while True:
