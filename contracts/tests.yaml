@@ -1,0 +1,47 @@
+contractVersion: "1.0"
+
+dataset:
+  name: tests
+  entity: Test
+  path: data/nodes/tests.csv
+  format: csv
+  delimiter: ","
+  encoding: utf-8
+  headerRequired: true
+  additionalColumnsAllowed: false
+
+primaryKey:
+  - id
+
+columns:
+  id:
+    type: string
+    required: true
+    unique: true
+    pattern: "^TEST-[0-9]{3}$"
+
+  title:
+    type: string
+    required: true
+    minimumLength: 1
+
+  description:
+    type: string
+    required: true
+    minimumLength: 1
+
+  preconditions:
+    type: string
+    required: true
+    minimumLength: 1
+
+  expectedResult:
+    type: string
+    required: true
+    minimumLength: 1
+
+crossDatasetRules:
+  - name: test_verifies_requirement
+    description: >
+      Every Test must verify at least one Requirement
+      through VERIFIES.

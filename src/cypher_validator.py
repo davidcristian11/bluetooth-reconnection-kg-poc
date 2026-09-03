@@ -3,6 +3,7 @@ import re
 
 FORBIDDEN_PATTERNS = [
     r"\bCREATE\b",
+    r"\bINSERT\b",
     r"\bMERGE\b",
     r"\bDELETE\b",
     r"\bDETACH\s+DELETE\b",
@@ -12,6 +13,11 @@ FORBIDDEN_PATTERNS = [
     r"\bCALL\b",
     r"\bLOAD\s+CSV\b",
 ]
+
+STRING_LITERAL_PATTERN = (
+    r"'(?:\\.|[^'\\])*'"
+    r'|"(?:\\.|[^"\\])*"'
+)
 
 
 class CypherValidationError(ValueError):
@@ -24,9 +30,18 @@ class UnsafeCypherError(CypherValidationError):
 
 def _remove_string_literals(cypher: str) -> str:
     return re.sub(
-        r"""'(?:\\.|[^'\\])*'|"(?:\\.|[^"\\])*\"""",
+        STRING_LITERAL_PATTERN,
         "''",
         cypher,
+    )
+
+
+def _remove_comments(cypher: str) -> str:
+    return re.sub(
+        r"/\*.*?\*/|//[^\r\n]*",
+        " ",
+        cypher,
+        flags=re.DOTALL,
     )
 
 
@@ -36,33 +51,38 @@ def validate_cypher(cypher: str) -> None:
             "Generated Cypher is empty."
         )
 
-    query = cypher.strip()
+    query_for_validation = _remove_string_literals(
+        cypher.strip()
+    )
 
-    if query.endswith(";"):
-        query = query[:-1]
+    query_for_validation = _remove_comments(
+        query_for_validation
+    ).strip()
 
-    if ";" in query:
+    if query_for_validation.endswith(";"):
+        query_for_validation = (
+            query_for_validation[:-1].rstrip()
+        )
+
+    if ";" in query_for_validation:
         raise UnsafeCypherError(
             "Only one Cypher statement is allowed."
         )
 
-    query_without_strings = _remove_string_literals(
-        query
-    )
-
     for pattern in FORBIDDEN_PATTERNS:
         if re.search(
             pattern,
-            query_without_strings,
+            query_for_validation,
             re.IGNORECASE,
         ):
             raise UnsafeCypherError(
-                f"Forbidden Cypher operation detected: {pattern}"
+                "Forbidden Cypher operation detected: "
+                f"{pattern}"
             )
 
     if not re.search(
         r"\bMATCH\b",
-        query_without_strings,
+        query_for_validation,
         re.IGNORECASE,
     ):
         raise CypherValidationError(
@@ -71,7 +91,7 @@ def validate_cypher(cypher: str) -> None:
 
     if not re.search(
         r"\bRETURN\b",
-        query_without_strings,
+        query_for_validation,
         re.IGNORECASE,
     ):
         raise CypherValidationError(

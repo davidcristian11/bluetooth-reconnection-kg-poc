@@ -1,0 +1,34 @@
+contractVersion: "1.0"
+
+dataset:
+  name: test_execution_execution_of_test
+  kind: relationship
+  relationshipType: EXECUTION_OF
+  path: data/relationships/test_execution_execution_of_test.csv
+  format: csv
+  delimiter: ","
+  encoding: utf-8
+  headerRequired: true
+  additionalColumnsAllowed: false
+
+primaryKey:
+  - executionId
+  - testId
+
+columns:
+  executionId:
+    type: string
+    required: true
+    unique: true
+    pattern: "^EXEC-[0-9]{3}$"
+    references:
+      dataset: test_executions
+      column: id
+
+  testId:
+    type: string
+    required: true
+    pattern: "^TEST-[0-9]{3}$"
+    references:
+      dataset: tests
+      column: id

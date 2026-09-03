@@ -1,0 +1,33 @@
+contractVersion: "1.0"
+
+dataset:
+  name: defect_ticket_affects_component
+  kind: relationship
+  relationshipType: AFFECTS
+  path: data/relationships/defect_ticket_affects_component.csv
+  format: csv
+  delimiter: ","
+  encoding: utf-8
+  headerRequired: true
+  additionalColumnsAllowed: false
+
+primaryKey:
+  - defectTicketId
+  - componentId
+
+columns:
+  defectTicketId:
+    type: string
+    required: true
+    pattern: "^DEF-[0-9]{3}$"
+    references:
+      dataset: defect_tickets
+      column: id
+
+  componentId:
+    type: string
+    required: true
+    pattern: "^COMP-[0-9]{3}$"
+    references:
+      dataset: software_components
+      column: id

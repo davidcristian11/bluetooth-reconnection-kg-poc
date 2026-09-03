@@ -15,7 +15,7 @@ class LLMClient:
             raise ValueError(
                 "COPILOT_GITHUB_TOKEN is missing from .env"
             )
-
+        self.model = os.getenv("COPILOT_MODEL", "auto").strip() or "auto"
         self.client = CopilotClient()
 
     async def start(self) -> None:
@@ -75,7 +75,7 @@ Question:
 """
 
         async with await self.client.create_session(
-            model="auto",
+            model=self.model,
             available_tools=[],
         ) as session:
             response = await session.send_and_wait(prompt)
@@ -115,7 +115,7 @@ Retrieved Neo4j facts:
 """
 
         async with await self.client.create_session(
-            model="auto",
+            model=self.model,
             available_tools=[],
         ) as session:
             response = await session.send_and_wait(prompt)

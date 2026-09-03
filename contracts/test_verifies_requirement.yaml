@@ -1,0 +1,33 @@
+contractVersion: "1.0"
+
+dataset:
+  name: test_verifies_requirement
+  kind: relationship
+  relationshipType: VERIFIES
+  path: data/relationships/test_verifies_requirement.csv
+  format: csv
+  delimiter: ","
+  encoding: utf-8
+  headerRequired: true
+  additionalColumnsAllowed: false
+
+primaryKey:
+  - testId
+  - requirementId
+
+columns:
+  testId:
+    type: string
+    required: true
+    pattern: "^TEST-[0-9]{3}$"
+    references:
+      dataset: tests
+      column: id
+
+  requirementId:
+    type: string
+    required: true
+    pattern: "^REQ-[0-9]{3}$"
+    references:
+      dataset: requirements
+      column: id
