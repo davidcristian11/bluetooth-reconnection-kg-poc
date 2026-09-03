@@ -1,0 +1,70 @@
+contractVersion: "1.0"
+
+dataset:
+  name: defect_tickets
+  entity: DefectTicket
+  path: data/nodes/defect_tickets.csv
+  format: csv
+  delimiter: ","
+  encoding: utf-8
+  headerRequired: true
+  additionalColumnsAllowed: false
+
+primaryKey:
+  - id
+
+columns:
+  id:
+    type: string
+    required: true
+    unique: true
+    pattern: "^DEF-[0-9]{3}$"
+
+  title:
+    type: string
+    required: true
+    minimumLength: 1
+
+  description:
+    type: string
+    required: true
+    minimumLength: 1
+
+  status:
+    type: string
+    required: true
+    allowedValues:
+      - Open
+      - In Progress
+      - Resolved
+
+  severity:
+    type: string
+    required: true
+    allowedValues:
+      - Low
+      - Medium
+      - High
+      - Critical
+
+  createdDate:
+    type: date
+    required: true
+    format: "%Y-%m-%d"
+    notFuture: true
+
+crossDatasetRules:
+  - name: defect_affects_component
+    description: >
+      Every DefectTicket must affect at least one SoftwareComponent
+      through AFFECTS.
+
+  - name: defect_is_linked_to_failed_execution
+    description: >
+      Every DefectTicket must be linked to at least one TestExecution
+      whose result is FAIL.
+
+  - name: passed_execution_has_no_defect
+    description: >
+      A TestExecution whose result is PASS must not be linked
+      to a DefectTicket.

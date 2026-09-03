@@ -1,0 +1,37 @@
+contractVersion: "1.0"
+
+dataset:
+  name: features
+  entity: Feature
+  path: data/nodes/features.csv
+  format: csv
+  delimiter: ","
+  encoding: utf-8
+  headerRequired: true
+  additionalColumnsAllowed: false
+
+primaryKey:
+  - id
+
+columns:
+  id:
+    type: string
+    required: true
+    unique: true
+    pattern: "^FEAT-[0-9]{3}$"
+
+  name:
+    type: string
+    required: true
+    minimumLength: 1
+
+  description:
+    type: string
+    required: true
+    minimumLength: 1
+
+crossDatasetRules:
+  - name: feature_has_requirement
+    description: >
+      Every Feature must be connected to at least one Requirement
+      through HAS_REQUIREMENT.

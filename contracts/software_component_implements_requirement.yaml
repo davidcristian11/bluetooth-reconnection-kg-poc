@@ -1,0 +1,33 @@
+contractVersion: "1.0"
+
+dataset:
+  name: software_component_implements_requirement
+  kind: relationship
+  relationshipType: IMPLEMENTS
+  path: data/relationships/software_component_implements_requirement.csv
+  format: csv
+  delimiter: ","
+  encoding: utf-8
+  headerRequired: true
+  additionalColumnsAllowed: false
+
+primaryKey:
+  - componentId
+  - requirementId
+
+columns:
+  componentId:
+    type: string
+    required: true
+    pattern: "^COMP-[0-9]{3}$"
+    references:
+      dataset: software_components
+      column: id
+
+  requirementId:
+    type: string
+    required: true
+    pattern: "^REQ-[0-9]{3}$"
+    references:
+      dataset: requirements
+      column: id

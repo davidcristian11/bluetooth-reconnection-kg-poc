@@ -1,0 +1,71 @@
+contractVersion: "1.0"
+
+dataset:
+  name: requirements
+  entity: Requirement
+  path: data/nodes/requirements.csv
+  format: csv
+  delimiter: ","
+  encoding: utf-8
+  headerRequired: true
+  additionalColumnsAllowed: false
+
+primaryKey:
+  - id
+
+columns:
+  id:
+    type: string
+    required: true
+    unique: true
+    pattern: "^REQ-[0-9]{3}$"
+
+  title:
+    type: string
+    required: true
+    minimumLength: 1
+
+  description:
+    type: string
+    required: true
+    minimumLength: 1
+
+  priority:
+    type: string
+    required: true
+    allowedValues:
+      - Low
+      - Medium
+      - High
+      - Critical
+
+  status:
+    type: string
+    required: true
+    allowedValues:
+      - Draft
+      - Approved
+
+businessRules:
+  - name: reconnection_time_threshold
+    appliesToRequirementId: REQ-002
+    maximumSeconds: 10.0
+    description: >
+      Executions verifying REQ-002 must complete Bluetooth
+      reconnection within 10 seconds.
+
+crossDatasetRules:
+  - name: requirement_belongs_to_feature
+    description: >
+      Every Requirement must be connected to at least one Feature
+      through HAS_REQUIREMENT.
+
+  - name: approved_requirement_is_implemented
+    description: >
+      Every Approved Requirement must be implemented by at least one
+      SoftwareComponent.
+
+  - name: approved_requirement_has_test_coverage
+    description: >
+      Every Approved Requirement must be verified by at least one Test.
+      Draft requirements may intentionally have no test coverage.
