@@ -171,13 +171,51 @@ docker compose up -d
 docker compose ps
 ```
 
-For a fresh database, execute these Cypher scripts in order:
+## Rebuild Neo4j
+
+The project provides a controlled rebuild workflow that recreates
+the local graph from the validated CSV source data.
+
+The workflow runs:
 
 ```text
-cypher/01-create-constraints.cypher
-cypher/02-import-nodes.cypher
-cypher/03-import-relationships.cypher
+source-data validation
+→ Neo4j connection
+→ reset safety guard
+→ graph cleanup
+→ constraints
+→ node import
+→ relationship import
+→ post-import validation
 ```
+
+Run a rebuild from the repository root:
+
+```powershell
+python src\rebuild_neo4j.py --confirm-reset "RESET bluetooth-reconnection-kg-poc/neo4j"
+```
+
+The rebuild is intentionally destructive and is protected by two
+safety checks:
+
+- the configured Neo4j host must be local;
+- the reset confirmation must exactly match the target project and database.
+
+Post-import validation checks:
+
+- node and relationship counts against the source CSV files;
+- duplicate or missing node IDs;
+- required relationship coverage;
+- the expected `EXEC-010` investigation scenario.
+
+To verify reproducibility, run:
+
+```powershell
+python src\rebuild_neo4j.py --confirm-reset "RESET bluetooth-reconnection-kg-poc/neo4j" --verify-repeatability
+```
+
+This performs two complete rebuilds and compares deterministic graph
+fingerprints. Both rebuilt graph states must be identical.
 
 Detailed import instructions are available in [docs/05-neo4j-import.md](docs/05-neo4j-import.md).
 
@@ -227,7 +265,11 @@ The test suite covers:
 - cross-dataset references;
 - relationship coverage;
 - domain-specific business rules;
-- end-to-end validation of the repository datasets.
+- end-to-end validation of the repository datasets;
+- Neo4j rebuild safety guards;
+- rebuild execution order and fail-fast behavior;
+- post-import validation and `EXEC-010`;
+- deterministic graph fingerprint behavior.
 
 ## Current safety controls
 

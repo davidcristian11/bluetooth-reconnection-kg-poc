@@ -100,39 +100,61 @@ The query displays the execution’s:
 * defect ticket;
 * affected software component.
 
-## Resetting the graph
+## Controlled graph rebuild
 
-Resetting removes all nodes and relationships from the current Neo4j database.
+The recommended way to recreate the graph is the controlled Python
+rebuild workflow rather than manually deleting and re-importing data.
 
-The constraints remain in place.
+Run:
 
-To reset the graph, run:
-
-```cypher
-MATCH (n)
-DETACH DELETE n;
+```powershell
+python src\rebuild_neo4j.py --confirm-reset "RESET bluetooth-reconnection-kg-poc/neo4j"
 ```
 
-This command should only be used when a complete re-import is required.
-
-After resetting, run the scripts again in this order:
+The rebuild runs in this order:
 
 ```text
-01-create-constraints.cypher
-02-import-nodes.cypher
-03-import-relationships.cypher
+validate source data
+→ connect to Neo4j
+→ verify reset safety
+→ clean graph
+→ apply constraints
+→ import nodes
+→ import relationships
+→ run post-import validation
 ```
 
-Because the scripts use `IF NOT EXISTS` and `MERGE`, they can be executed repeatedly without creating duplicates.
+The reset is allowed only when Neo4j is configured on a local host and
+the exact project/database confirmation string is supplied.
+
+Any failure stops the workflow immediately.
+
+To prove that the rebuild is reproducible, run:
+
+```powershell
+python src\rebuild_neo4j.py --confirm-reset "RESET bluetooth-reconnection-kg-poc/neo4j" --verify-repeatability
+```
+
+The command performs two full rebuild cycles and compares deterministic
+fingerprints of all nodes, relationships, labels, IDs, and properties.
 
 ## Validation
 
-After importing, confirm the following:
+Post-import validation automatically confirms:
 
-* the graph contains 52 nodes;
-* node counts match the expected counts;
-* relationship counts match the CSV row counts;
-* every `TestExecution` has an `EXECUTION_OF` relationship;
-* every `TestTrace` is connected through `PRODUCES`;
-* defect tickets are connected to executions and affected components;
-* the intentionally uncovered requirement remains identifiable.
+- total node counts match the node CSV files;
+- node counts match per label;
+- total relationship counts match the relationship CSV files;
+- relationship counts match per type;
+- node IDs are present and not duplicated;
+- mandatory relationship coverage is satisfied;
+- the `EXEC-010` investigation scenario matches the expected graph path.
+
+The current synthetic dataset produces:
+
+- 52 nodes;
+- 64 relationships.
+
+A successful rebuild also prints a deterministic graph fingerprint.
+When `--verify-repeatability` is used, fingerprints from both rebuild
+cycles must be identical.
