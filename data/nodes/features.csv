@@ -1,2 +1,2 @@
-id,name,description
-FEAT-001,Bluetooth Phone Automatic Reconnection,"Automatically reconnect a previously paired Bluetooth phone after a vehicle ignition cycle."
+id,name,description,sourceSystem
+FEAT-001,Bluetooth Phone Automatic Reconnection,"Automatically reconnect a previously paired Bluetooth phone after a vehicle ignition cycle.",ProductDefinitionSystem

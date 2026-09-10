@@ -59,6 +59,12 @@ columns:
       Version of the complete software build under test,
       not the version of one individual component.
 
+  sourceSystem:
+    type: string
+    required: true
+    allowedValues:
+      - TestManagementSystem
+
 crossDatasetRules:
   - name: execution_has_exactly_one_test
     description: >

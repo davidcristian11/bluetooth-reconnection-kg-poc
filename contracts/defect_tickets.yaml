@@ -53,6 +53,12 @@ columns:
     format: "%Y-%m-%d"
     notFuture: true
 
+  sourceSystem:
+    type: string
+    required: true
+    allowedValues:
+      - DefectTrackingSystem
+
 crossDatasetRules:
   - name: defect_affects_component
     description: >

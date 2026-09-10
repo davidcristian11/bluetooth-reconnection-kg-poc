@@ -30,6 +30,12 @@ columns:
     required: true
     minimumLength: 1
 
+  sourceSystem:
+    type: string
+    required: true
+    allowedValues:
+      - ProductDefinitionSystem
+
 crossDatasetRules:
   - name: feature_has_requirement
     description: >

@@ -40,6 +40,12 @@ columns:
     required: true
     minimumLength: 1
 
+  sourceSystem:
+    type: string
+    required: true
+    allowedValues:
+      - TestManagementSystem
+
 crossDatasetRules:
   - name: test_verifies_requirement
     description: >
