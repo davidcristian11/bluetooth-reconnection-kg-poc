@@ -21,4 +21,8 @@ venv/
 .env.*
 !.env.example
 
+# Local Cypher exercises
 cypher/exercise-cypher.cypher
+
+# Generated AI evaluation outputs
+evaluation/*-run.json

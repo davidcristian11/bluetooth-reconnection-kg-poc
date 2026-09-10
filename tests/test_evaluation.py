@@ -28,6 +28,7 @@ def make_result(
         retrieval_correct=retrieval,
         answer_correct=answer,
         generation_attempts=1,
+        retry_reason=None,
         cypher="MATCH (n) RETURN n",
         records=[],
         answer="Example answer",

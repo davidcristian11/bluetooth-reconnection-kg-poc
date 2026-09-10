@@ -1,6 +1,7 @@
 import pytest
 
 from neo4j_client import (
+    Neo4jClient,
     QueryResultLimitError,
     _collect_limited_records,
 )
@@ -46,6 +47,7 @@ def test_collects_records_within_limit():
         {"id": "REQ-001"},
         {"id": "REQ-002"},
     ]
+
     assert result.consumed is True
 
 
@@ -67,3 +69,47 @@ def test_rejects_results_over_limit():
         )
 
     assert result.consumed is True
+
+
+def test_find_existing_entity_ids_uses_parameterized_query():
+    client = Neo4jClient.__new__(
+        Neo4jClient
+    )
+
+    captured = {}
+
+    def fake_run_query(
+        cypher,
+        parameters=None,
+    ):
+        captured["cypher"] = cypher
+        captured["parameters"] = parameters
+
+        return [
+            {"id": "REQ-002"},
+            {"id": "TEST-006"},
+        ]
+
+    client.run_query = fake_run_query
+
+    result = client.find_existing_entity_ids(
+        [
+            "req-002",
+            "TEST-006",
+            "REQ-002",
+        ]
+    )
+
+    assert result == {
+        "REQ-002",
+        "TEST-006",
+    }
+
+    assert captured["parameters"] == {
+        "entity_ids": [
+            "REQ-002",
+            "TEST-006",
+        ]
+    }
+
+    assert "$entity_ids" in captured["cypher"]

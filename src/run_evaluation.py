@@ -85,6 +85,7 @@ async def run_case(
             generation_attempts=(
                 response.generation_attempts
             ),
+            retry_reason=response.retry_reason,
             cypher=response.cypher,
             records=response.records,
             answer=response.answer,
@@ -102,6 +103,7 @@ async def run_case(
             retrieval_correct=False,
             answer_correct=False,
             generation_attempts=None,
+            retry_reason=None,
             cypher=None,
             records=[],
             answer=None,
@@ -143,6 +145,12 @@ def print_result(
         print(
             "Cypher attempts: "
             f"{result.generation_attempts}"
+        )
+
+    if result.retry_reason:
+        print(
+            "Retry reason: "
+            f"{result.retry_reason}"
         )
 
     for issue in result.retrieval_issues:

@@ -287,6 +287,31 @@ different valid Cypher queries were observed across repeated runs.
 
 See `evaluation/README.md` for benchmark design and scoring details.
 
+### Repeated AI reliability evaluation
+
+Run the complete benchmark repeatedly to measure run-to-run reliability:
+
+```cmd
+python src\run_reliability_evaluation.py --runs 5
+```
+
+The reliability experiment measures perfect-run rate, fully correct case
+rate, retries, failure types, and Cypher variation.
+
+A five-run experiment on September 10, 2026 produced:
+
+```text
+60/60 fully correct case executions
+5/5 perfect benchmark runs
+0/60 executions requiring retry
+```
+
+Multiple valid Cypher formulations were observed for every benchmark
+case, showing that generation can vary while retrieval and answer
+correctness remain stable.
+
+See [docs/08-ai-reliability.md](docs/08-ai-reliability.md) for details.
+
 ## Run automated tests
 
 Run the complete test suite:
@@ -339,9 +364,9 @@ The Cypher validator is a best-effort safety filter, not a complete authorizatio
 
 - The graph schema is manually provided to the LLM.
 - A valid Cypher query can still be semantically incorrect.
-- Empty results do not automatically trigger retry.
+- Empty-result retry is conservative and currently requires explicit entity IDs from the question that can be confirmed in the graph.
 - `COPILOT_MODEL=auto` can select different models over time.
-- There is no automated AI evaluation benchmark yet.
+- The automated AI benchmark contains 12 synthetic cases and should be treated as PoC regression evidence, not production-level reliability evidence.
 - There is no vector retrieval or hybrid retrieval.
 - The pipeline is fixed and is not an autonomous agent.
 - The Data Contract format is project-specific, not an industry-standard specification.

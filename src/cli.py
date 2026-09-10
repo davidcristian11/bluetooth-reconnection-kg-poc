@@ -60,8 +60,8 @@ async def main():
                         "\nNOTE"
                     )
                     print(
-                        "The first Cypher attempt failed "
-                        "and was automatically corrected."
+                        "The first Cypher attempt was automatically "
+                        "reviewed and corrected."
                     )
 
                 print("\nAI ANSWER")
