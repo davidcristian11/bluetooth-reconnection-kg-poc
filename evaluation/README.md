@@ -8,9 +8,9 @@ synthetic Knowledge Graph dataset.
 
 The benchmark evaluates three stages independently:
 
-1. execution success;
-2. graph retrieval correctness;
-3. final answer correctness.
+1. pipeline execution success;
+2. Neo4j retrieval correctness;
+3. grounded answer correctness.
 
 A case is fully correct only when all three checks pass.
 

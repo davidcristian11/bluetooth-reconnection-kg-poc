@@ -85,7 +85,11 @@ class Neo4jClient:
     def verify_connection(self) -> None:
         self.driver.verify_connectivity()
 
-    def run_query(self, cypher: str):
+    def run_query(
+        self,
+        cypher: str,
+        parameters: dict | None = None,
+    ):
         query = Query(
             cypher,
             timeout=self.query_timeout_seconds,
@@ -93,6 +97,7 @@ class Neo4jClient:
 
         return self.driver.execute_query(
             query,
+            parameters_=parameters or {},
             database_=self.database,
             routing_=RoutingControl.READ,
             result_transformer_=lambda result: (
@@ -102,6 +107,37 @@ class Neo4jClient:
                 )
             ),
         )
+
+    def find_existing_entity_ids(
+        self,
+        entity_ids: list[str],
+    ) -> set[str]:
+        if not entity_ids:
+            return set()
+
+        normalized_ids = sorted(
+            {
+                entity_id.upper()
+                for entity_id in entity_ids
+            }
+        )
+
+        records = self.run_query(
+            """
+            MATCH (n)
+            WHERE n.id IN $entity_ids
+            RETURN DISTINCT n.id AS id
+            """,
+            parameters={
+                "entity_ids": normalized_ids,
+            },
+        )
+
+        return {
+            record["id"]
+            for record in records
+            if record.get("id")
+        }
 
     def close(self) -> None:
         self.driver.close()

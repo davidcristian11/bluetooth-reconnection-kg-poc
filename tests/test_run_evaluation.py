@@ -15,6 +15,7 @@ class SuccessfulService:
                 "TEST-006 verifies requirement REQ-006."
             ),
             generation_attempts=1,
+            retry_reason=None,
             cypher=(
                 "MATCH (t:Test)-[:VERIFIES]->"
                 "(r:Requirement) RETURN r.id"

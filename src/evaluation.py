@@ -41,6 +41,7 @@ class EvaluationResult:
     retrieval_correct: bool
     answer_correct: bool
     generation_attempts: int | None
+    retry_reason: str | None
     cypher: str | None
     records: list[dict]
     answer: str | None
@@ -58,6 +59,7 @@ class EvaluationResult:
             "answer_correct": self.answer_correct,
             "outcome": classify_result(self),
             "generation_attempts": self.generation_attempts,
+            "retry_reason": self.retry_reason,
             "cypher": self.cypher,
             "records": self.records,
             "answer": self.answer,
