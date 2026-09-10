@@ -241,6 +241,52 @@ NEO4J RESULT
 AI ANSWER
 ```
 
+## AI evaluation benchmark
+
+The current schema-guided Text-to-Cypher pipeline can be evaluated
+against deterministic ground truth derived from the synthetic graph.
+
+The benchmark contains 12 questions across:
+
+- entity lookup;
+- relationship traversal;
+- multi-hop reasoning;
+- aggregation and filtering;
+- no-result handling.
+
+Run the benchmark:
+
+```cmd
+python src\run_evaluation.py
+```
+
+Optionally write the complete run details to a local JSON file:
+
+```cmd
+python src\run_evaluation.py --output evaluation\baseline-run.json
+```
+
+The benchmark measures separately:
+
+- pipeline execution success;
+- Neo4j retrieval correctness;
+- grounded answer correctness.
+
+A calibrated baseline run produced:
+
+```text
+Execution success: 12/12
+Retrieval correct: 12/12
+Answer correct: 12/12
+Fully correct: 12/12
+```
+
+The configured model was `auto`, so this single baseline run is not
+evidence of deterministic AI behavior. During calibration, structurally
+different valid Cypher queries were observed across repeated runs.
+
+See `evaluation/README.md` for benchmark design and scoring details.
+
 ## Run automated tests
 
 Run the complete test suite:
@@ -269,7 +315,11 @@ The test suite covers:
 - Neo4j rebuild safety guards;
 - rebuild execution order and fail-fast behavior;
 - post-import validation and `EXEC-010`;
-- deterministic graph fingerprint behavior.
+- deterministic graph fingerprint behavior;
+- AI benchmark definition validation;
+- deterministic retrieval and answer scoring;
+- benchmark outcome classification;
+- evaluation-runner success and failure behavior.
 
 ## Current safety controls
 
