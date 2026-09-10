@@ -40,6 +40,12 @@ columns:
     required: true
     minimumLength: 1
 
+  sourceSystem:
+    type: string
+    required: true
+    allowedValues:
+      - TraceRepository
+
 crossDatasetRules:
   - name: trace_has_exactly_one_execution
     description: >

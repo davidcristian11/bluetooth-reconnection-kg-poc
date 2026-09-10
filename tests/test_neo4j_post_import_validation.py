@@ -8,6 +8,7 @@ from neo4j_post_import_validation import (
     calculate_graph_fingerprint,
     validate_exec_010_scenario,
     validate_post_import,
+    validate_source_systems,
 )
 
 
@@ -36,6 +37,49 @@ class FingerprintClient:
             return deepcopy(self.relationships)
 
         return deepcopy(self.nodes)
+
+
+def test_source_system_validation_accepts_expected_metadata(
+    monkeypatch,
+):
+    monkeypatch.setattr(
+        validation,
+        "SOURCE_SYSTEM_BY_LABEL",
+        {"Requirement": "RequirementsSystem"},
+    )
+    client = FakeClient([])
+
+    issues = validate_source_systems(client)
+
+    assert issues == []
+    assert client.calls[0]["parameters"] == {
+        "expected_source_system": "RequirementsSystem"
+    }
+
+
+def test_source_system_validation_rejects_mismatch(
+    monkeypatch,
+):
+    monkeypatch.setattr(
+        validation,
+        "SOURCE_SYSTEM_BY_LABEL",
+        {"Requirement": "RequirementsSystem"},
+    )
+    client = FakeClient(
+        [
+            {
+                "id": "REQ-002",
+                "source_system": "TestManagementSystem",
+            }
+        ]
+    )
+
+    issues = validate_source_systems(client)
+
+    assert issues == [
+        "Requirement 'REQ-002' has sourceSystem "
+        "'TestManagementSystem'; expected 'RequirementsSystem'"
+    ]
 
 
 def test_exec_010_scenario_accepts_expected_path():
@@ -143,6 +187,11 @@ def test_post_import_validation_raises_all_detected_issues(
     )
     monkeypatch.setattr(
         validation,
+        "validate_source_systems",
+        lambda client: ["source-system mismatch"],
+    )
+    monkeypatch.setattr(
+        validation,
         "validate_required_relationships",
         lambda client: [],
     )
@@ -159,3 +208,4 @@ def test_post_import_validation_raises_all_detected_issues(
         validate_post_import(object())
 
     assert "duplicate id" in str(exc_info.value)
+    assert "source-system mismatch" in str(exc_info.value)

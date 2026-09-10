@@ -46,6 +46,12 @@ columns:
       - Draft
       - Approved
 
+  sourceSystem:
+    type: string
+    required: true
+    allowedValues:
+      - RequirementsSystem
+
 businessRules:
   - name: reconnection_time_threshold
     appliesToRequirementId: REQ-002

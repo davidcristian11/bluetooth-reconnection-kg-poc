@@ -35,6 +35,12 @@ columns:
     required: true
     pattern: "^[0-9]+\\.[0-9]+\\.[0-9]+$"
 
+  sourceSystem:
+    type: string
+    required: true
+    allowedValues:
+      - SoftwareArchitectureSystem
+
 crossDatasetRules:
   - name: component_implements_requirement
     description: >

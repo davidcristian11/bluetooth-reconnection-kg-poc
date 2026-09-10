@@ -2,7 +2,8 @@
 LOAD CSV WITH HEADERS FROM 'file:///nodes/features.csv' AS row // mounted directory from docker-compose.yml
 MERGE (n:Feature {id: row.id}) // merge == create a node if not exists, otherwise match existing node
 SET n.name = row.name,
-    n.description = row.description;
+    n.description = row.description,
+    n.sourceSystem = row.sourceSystem;
 
 // Import Requirement nodes
 LOAD CSV WITH HEADERS FROM 'file:///nodes/requirements.csv' AS row
@@ -10,20 +11,23 @@ MERGE (n:Requirement {id: row.id})
 SET n.title = row.title,
     n.description = row.description,
     n.priority = row.priority,
-    n.status = row.status;
+    n.status = row.status,
+    n.sourceSystem = row.sourceSystem;
 
 LOAD CSV WITH HEADERS FROM 'file:///nodes/software_components.csv' AS row
 MERGE (n:SoftwareComponent {id: row.id})
 SET n.name = row.name,
     n.description = row.description,
-    n.version = row.version;
+    n.version = row.version,
+    n.sourceSystem = row.sourceSystem;
 
 LOAD CSV WITH HEADERS FROM 'file:///nodes/tests.csv' AS row
 MERGE (n:Test {id: row.id})
 SET n.title = row.title,
     n.description = row.description,
     n.preconditions = row.preconditions,
-    n.expectedResult = row.expectedResult;
+    n.expectedResult = row.expectedResult,
+    n.sourceSystem = row.sourceSystem;
 
 LOAD CSV WITH HEADERS FROM 'file:///nodes/test_executions.csv' AS row
 MERGE (n:TestExecution {id: row.id})
@@ -42,7 +46,8 @@ SET n.executionDate =
             THEN null
             ELSE toFloat(row.reconnectionTimeSeconds)
         END,
-    n.softwareVersion = row.softwareVersion;
+    n.softwareVersion = row.softwareVersion,
+    n.sourceSystem = row.sourceSystem;
 
 LOAD CSV WITH HEADERS FROM 'file:///nodes/test_traces.csv' AS row
 MERGE (n:TestTrace {id: row.id})
@@ -53,7 +58,8 @@ SET n.timestamp =
             ELSE datetime(row.timestamp)
         END,
     n.level = row.level,
-    n.message = row.message;
+    n.message = row.message,
+    n.sourceSystem = row.sourceSystem;
 
 LOAD CSV WITH HEADERS FROM 'file:///nodes/defect_tickets.csv' AS row
 MERGE (n:DefectTicket {id: row.id})
@@ -66,4 +72,5 @@ SET n.title = row.title,
             WHEN row.createdDate IS NULL OR trim(row.createdDate) = ''
             THEN null
             ELSE date(row.createdDate)
-        END;
+        END,
+    n.sourceSystem = row.sourceSystem;

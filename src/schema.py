@@ -8,6 +8,7 @@ Feature
 - id
 - name
 - description
+- sourceSystem
 
 Requirement
 - id
@@ -15,12 +16,14 @@ Requirement
 - description
 - priority
 - status
+- sourceSystem
 
 SoftwareComponent
 - id
 - name
 - description
 - version
+- sourceSystem
 
 Test
 - id
@@ -28,6 +31,7 @@ Test
 - description
 - preconditions
 - expectedResult
+- sourceSystem
 
 TestExecution
 - id
@@ -36,12 +40,14 @@ TestExecution
 - result
 - reconnectionTimeSeconds
 - softwareVersion
+- sourceSystem
 
 TestTrace
 - id
 - timestamp
 - level
 - message
+- sourceSystem
 
 DefectTicket
 - id
@@ -50,6 +56,7 @@ DefectTicket
 - status
 - severity
 - createdDate
+- sourceSystem
 
 
 Relationships:
@@ -71,6 +78,18 @@ Relationships:
 
 Known property values:
 
+Feature.sourceSystem:
+- ProductDefinitionSystem
+
+Requirement.sourceSystem:
+- RequirementsSystem
+
+SoftwareComponent.sourceSystem:
+- SoftwareArchitectureSystem
+
+Test.sourceSystem:
+- TestManagementSystem
+
 TestExecution.environment:
 - SiL
 - HiL
@@ -79,6 +98,15 @@ TestExecution.environment:
 TestExecution.result:
 - PASS
 - FAIL
+
+TestExecution.sourceSystem:
+- TestManagementSystem
+
+TestTrace.sourceSystem:
+- TraceRepository
+
+DefectTicket.sourceSystem:
+- DefectTrackingSystem
 
 Known ID formats:
 

@@ -21,6 +21,17 @@ NODE_SOURCES = {
     "DefectTicket": PROJECT_ROOT / "data/nodes/defect_tickets.csv",
 }
 
+SOURCE_SYSTEM_BY_LABEL = {
+    "Feature": "ProductDefinitionSystem",
+    "Requirement": "RequirementsSystem",
+    "SoftwareComponent": "SoftwareArchitectureSystem",
+    "Test": "TestManagementSystem",
+    "TestExecution": "TestManagementSystem",
+    "TestTrace": "TraceRepository",
+    "DefectTicket": "DefectTrackingSystem",
+}
+
+
 RELATIONSHIP_SOURCES = {
     "HAS_REQUIREMENT": (
         PROJECT_ROOT
@@ -264,6 +275,37 @@ def validate_duplicate_ids(
     return issues
 
 
+def validate_source_systems(
+    client: Neo4jRebuildClient,
+) -> list[str]:
+    issues: list[str] = []
+
+    for label, expected_source_system in (
+        SOURCE_SYSTEM_BY_LABEL.items()
+    ):
+        violations = client.run_query(
+            f"""
+            MATCH (n:{label})
+            WHERE n.sourceSystem IS NULL
+               OR n.sourceSystem <> $expected_source_system
+            RETURN
+                n.id AS id,
+                n.sourceSystem AS source_system
+            ORDER BY id
+            """,
+            expected_source_system=expected_source_system,
+        )
+
+        for violation in violations:
+            issues.append(
+                f"{label} {violation['id']!r} has sourceSystem "
+                f"{violation['source_system']!r}; expected "
+                f"{expected_source_system!r}"
+            )
+
+    return issues
+
+
 def validate_required_relationships(
     client: Neo4jRebuildClient,
 ) -> list[str]:
@@ -462,6 +504,7 @@ def validate_post_import(
 
     issues.extend(count_issues)
     issues.extend(validate_duplicate_ids(client))
+    issues.extend(validate_source_systems(client))
     issues.extend(validate_required_relationships(client))
     issues.extend(validate_exec_010_scenario(client))
 
@@ -481,8 +524,8 @@ def validate_post_import(
         "Post-import validation passed: "
         f"{expected_nodes} nodes, "
         f"{expected_relationships} relationships, "
-        "no duplicate IDs, required relationships valid, "
-        "EXEC-010 valid."
+        "no duplicate IDs, source-system metadata valid, "
+        "required relationships valid, EXEC-010 valid."
     )
 
     print(f"Graph fingerprint: {fingerprint}")
