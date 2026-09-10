@@ -1,0 +1,158 @@
+version: 1
+
+description: >
+  Baseline evaluation dataset for the schema-guided Text-to-Cypher
+  pipeline. Expected values are derived from the synthetic source data
+  and represent graph facts that should be retrieved and reflected in
+  the final answer.
+
+cases:
+  - id: EVAL-001
+    category: entity_lookup
+    question: "What requirement does TEST-006 verify?"
+    expected:
+      result: non_empty
+      required_values:
+        - REQ-006
+      exact_id_sets:
+        REQ:
+          - REQ-006
+
+  - id: EVAL-002
+    category: entity_lookup
+    question: "Which software component is affected by DEF-003?"
+    expected:
+      result: non_empty
+      required_values:
+        - COMP-004
+      exact_id_sets:
+        COMP:
+          - COMP-004
+
+  - id: EVAL-003
+    category: relationship_traversal
+    question: "Which requirement is implemented by COMP-003?"
+    expected:
+      result: non_empty
+      required_values:
+        - REQ-003
+      exact_id_sets:
+        REQ:
+          - REQ-003
+
+  - id: EVAL-004
+    category: relationship_traversal
+    question: "Which tests verify REQ-004?"
+    expected:
+      result: non_empty
+      required_values:
+        - TEST-004
+        - TEST-008
+        - TEST-009
+      exact_id_sets:
+        TEST:
+          - TEST-004
+          - TEST-008
+          - TEST-009
+
+  - id: EVAL-005
+    category: relationship_traversal
+    question: "Which traces were produced by EXEC-006?"
+    expected:
+      result: non_empty
+      required_values:
+        - TRACE-003
+        - TRACE-004
+        - TRACE-005
+      exact_id_sets:
+        TRACE:
+          - TRACE-003
+          - TRACE-004
+          - TRACE-005
+
+  - id: EVAL-006
+    category: multi_hop_reasoning
+    question: "Why did EXEC-010 fail?"
+    expected:
+      result: non_empty
+      required_values:
+        - EXEC-010
+        - FAIL
+        - 18.0
+        - DEF-001
+
+  - id: EVAL-007
+    category: multi_hop_reasoning
+    question: >
+      Which defect ticket is linked to EXEC-012 and which software
+      component does that defect affect?
+    expected:
+      result: non_empty
+      required_values:
+        - DEF-002
+        - COMP-005
+
+  - id: EVAL-008
+    category: multi_hop_reasoning
+    question: >
+      Which defect ticket is linked to failed executions in more than
+      one test environment?
+    expected:
+      result: non_empty
+      required_values:
+        - DEF-001
+      exact_id_sets:
+        DEF:
+          - DEF-001
+
+  - id: EVAL-009
+    category: aggregation_filtering
+    question: >
+      Which test executions verifying REQ-002 exceeded the 10-second
+      reconnection requirement?
+    expected:
+      result: non_empty
+      required_values:
+        - EXEC-003
+        - EXEC-006
+        - EXEC-008
+        - EXEC-010
+        - EXEC-016
+      exact_id_sets:
+        EXEC:
+          - EXEC-003
+          - EXEC-006
+          - EXEC-008
+          - EXEC-010
+          - EXEC-016
+
+  - id: EVAL-010
+    category: aggregation_filtering
+    question: >
+      How many test executions passed and failed in each environment?
+    expected:
+      result: non_empty
+      environment_result_counts:
+        SiL:
+          PASS: 4
+          FAIL: 1
+        HiL:
+          PASS: 2
+          FAIL: 2
+        Vehicle:
+          PASS: 3
+          FAIL: 4
+
+  - id: EVAL-011
+    category: aggregation_filtering
+    question: "How many failed Vehicle test executions are there?"
+    expected:
+      result: non_empty
+      required_values:
+        - 4
+
+  - id: EVAL-012
+    category: no_result_handling
+    question: "What is the status of requirement REQ-999?"
+    expected:
+      result: empty
