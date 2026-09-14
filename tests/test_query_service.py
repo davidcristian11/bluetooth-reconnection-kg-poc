@@ -437,55 +437,55 @@ def test_fails_after_two_invalid_queries():
     assert llm.answer_calls == []
 
 
-    def test_retrieve_question_skips_answer_generation():
-        llm = FakeLLMClient(
-            cypher_responses=[
-                "MATCH "
-                "(r:Requirement {id: 'REQ-006'}) "
-                "RETURN r.id AS requirementId"
-            ],
-        )
+def test_retrieve_question_skips_answer_generation():
+    llm = FakeLLMClient(
+        cypher_responses=[
+            "MATCH "
+            "(r:Requirement {id: 'REQ-006'}) "
+            "RETURN r.id AS requirementId"
+        ],
+    )
 
-        neo4j = FakeNeo4jClient(
-            query_responses=[
-                [
-                    {
-                        "requirementId": (
-                            "REQ-006"
-                        )
-                    }
-                ]
+    neo4j = FakeNeo4jClient(
+        query_responses=[
+            [
+                {
+                    "requirementId": (
+                        "REQ-006"
+                    )
+                }
             ]
-        )
-
-        service = QueryService(
-            llm,
-            neo4j,
-        )
-
-        response = asyncio.run(
-            service.retrieve_question(
-                "What requirement does "
-                "TEST-006 verify?"
-            )
-        )
-
-        assert response.records == [
-            {
-                "requirementId": (
-                    "REQ-006"
-                )
-            }
         ]
+    )
 
-        assert (
-            response.generation_attempts
-            == 1
+    service = QueryService(
+        llm,
+        neo4j,
+    )
+
+    response = asyncio.run(
+        service.retrieve_question(
+            "What requirement does "
+            "TEST-006 verify?"
         )
+    )
 
-        assert (
-            response.retry_reason
-            is None
-        )
+    assert response.records == [
+        {
+            "requirementId": (
+                "REQ-006"
+            )
+        }
+    ]
 
-        assert llm.answer_calls == []
+    assert (
+        response.generation_attempts
+        == 1
+    )
+
+    assert (
+        response.retry_reason
+        is None
+    )
+
+    assert llm.answer_calls == []

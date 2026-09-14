@@ -1,0 +1,81 @@
+version: 1
+
+cases:
+  - id: AGT-001
+    category: direct_relationship
+    question: "What requirement does TEST-006 verify?"
+    expected:
+      graphToolRequired: true
+      maxGraphToolCalls: 1
+      requiredAnswerValues:
+        - "TEST-006"
+        - "REQ-006"
+
+  - id: AGT-002
+    category: multi_hop
+    question: "Which defect ticket is linked to EXEC-012 and which software component does that defect affect?"
+    expected:
+      graphToolRequired: true
+      maxGraphToolCalls: 1
+      requiredAnswerValues:
+        - "EXEC-012"
+        - "DEF-002"
+        - "COMP-005"
+
+  - id: AGT-003
+    category: filtering
+    question: "Which test executions verifying REQ-002 exceeded the 10-second reconnection requirement?"
+    expected:
+      graphToolRequired: true
+      maxGraphToolCalls: 1
+      requiredAnswerValues:
+        - "EXEC-003"
+        - "EXEC-006"
+        - "EXEC-008"
+        - "EXEC-010"
+        - "EXEC-016"
+
+  - id: AGT-004
+    category: cross_environment
+    question: "Which defect ticket is linked to failed executions in more than one test environment, and which environments are involved?"
+    expected:
+      graphToolRequired: true
+      maxGraphToolCalls: 1
+      requiredAnswerValues:
+        - "DEF-001"
+        - "SiL"
+        - "HiL"
+        - "Vehicle"
+
+  - id: AGT-005
+    category: no_result
+    question: "What information is available for requirement REQ-999?"
+    expected:
+      graphToolRequired: true
+      maxGraphToolCalls: 1
+      requiredAnswerValues: []
+      expectNoResultAnswer: true
+
+  - id: AGT-006
+    category: conceptual
+    question: "What is a Knowledge Graph?"
+    expected:
+      graphToolRequired: false
+      maxGraphToolCalls: 0
+      requiredAnswerValues: []
+
+  - id: AGT-007
+    category: capability
+    question: "What can you help me investigate in this project?"
+    expected:
+      graphToolRequired: false
+      maxGraphToolCalls: 0
+      requiredAnswerValues: []
+
+  - id: AGT-008
+    category: conversational
+    question: "Hello!"
+    expected:
+      graphToolRequired: false
+      maxGraphToolCalls: 0
+      requiredAnswerValues: []

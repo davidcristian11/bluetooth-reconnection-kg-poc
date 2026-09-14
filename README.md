@@ -1,14 +1,18 @@
 # Bluetooth Reconnection Knowledge Graph PoC
 
-A personal learning project demonstrating how synthetic automotive engineering data can be modeled in Neo4j and queried through a schema-guided LLM pipeline.
+A personal learning project demonstrating how synthetic automotive engineering data can be modeled in Neo4j, retrieved through schema-guided Text-to-Cypher, and exposed through a minimal tool-calling agent.
 
-The AI experiment is best described as:
+The core AI retrieval pipeline is best described as:
 
 **Schema-guided Text-to-Cypher with graph-grounded answer generation.**
 
-It is not a production GraphRAG system.
+The project also contains a minimal agent that decides when to invoke the existing graph retrieval capability.
+
+It is not a production GraphRAG or autonomous-agent system.
 
 ## Architecture
+
+The core graph retrieval pipeline is:
 
 ```text
 Natural-language question
@@ -28,6 +32,38 @@ LLM
 Grounded answer
 ```
 
+The minimal tool-calling agent adds a decision layer above that existing retrieval path:
+
+```text
+User question
+        ↓
+Minimal Agent
+        ↓
+Does the question require project graph data?
+        ↓
+     yes / no
+     /      \
+    v        v
+graph tool   direct answer
+    |
+    v
+existing Text-to-Cypher retrieval
+    |
+    v
+Neo4j facts
+    |
+    v
+grounded final answer
+```
+
+The agent currently exposes one custom tool:
+
+```text
+graph_retrieval
+```
+
+and permits at most one graph tool invocation per user question.
+
 ## Project structure
 
 ```text
@@ -36,7 +72,8 @@ data/            Synthetic node and relationship CSV files
 cypher/          Neo4j constraints, imports, and investigation queries
 docs/            Project and architecture documentation
 diagrams/        Ontology diagram
-src/             Python AI experiment and data-quality pipeline
+evaluation/      AI, retrieval, and agent benchmark definitions and results
+src/             Python AI, retrieval, agent, and data-quality code
 tests/           Automated unit and integration tests
 compose.yaml     Local Neo4j configuration
 ```
@@ -173,8 +210,7 @@ docker compose ps
 
 ## Rebuild Neo4j
 
-The project provides a controlled rebuild workflow that recreates
-the local graph from the validated CSV source data.
+The project provides a controlled rebuild workflow that recreates the local graph from the validated CSV source data.
 
 The workflow runs:
 
@@ -195,8 +231,7 @@ Run a rebuild from the repository root:
 python src\rebuild_neo4j.py --confirm-reset "RESET bluetooth-reconnection-kg-poc/neo4j"
 ```
 
-The rebuild is intentionally destructive and is protected by two
-safety checks:
+The rebuild is intentionally destructive and is protected by two safety checks:
 
 - the configured Neo4j host must be local;
 - the reset confirmation must exactly match the target project and database.
@@ -214,14 +249,13 @@ To verify reproducibility, run:
 python src\rebuild_neo4j.py --confirm-reset "RESET bluetooth-reconnection-kg-poc/neo4j" --verify-repeatability
 ```
 
-This performs two complete rebuilds and compares deterministic graph
-fingerprints. Both rebuilt graph states must be identical.
+This performs two complete rebuilds and compares deterministic graph fingerprints. Both rebuilt graph states must be identical.
 
 Detailed import instructions are available in [docs/05-neo4j-import.md](docs/05-neo4j-import.md).
 
 ## Run the AI experiment
 
-Run the command from the repository root:
+Run the fixed schema-guided query pipeline from the repository root:
 
 ```powershell
 python src\cli.py
@@ -241,10 +275,54 @@ NEO4J RESULT
 AI ANSWER
 ```
 
+This CLI always uses the graph retrieval pipeline.
+
+## Run the minimal tool-calling agent
+
+Run:
+
+```powershell
+python src\agent_cli.py
+```
+
+The agent decides whether the user question requires project-specific graph evidence.
+
+For an engineering-data question such as:
+
+```text
+What requirement does TEST-006 verify?
+```
+
+the expected behavior is:
+
+```text
+graph_retrieval: USED
+Tool calls: 1
+```
+
+For a conceptual question such as:
+
+```text
+What is a Knowledge Graph?
+```
+
+the expected behavior is:
+
+```text
+graph_retrieval: NOT USED
+```
+
+The agent currently exposes only:
+
+```text
+graph_retrieval
+```
+
+and permits at most one graph tool invocation per user question.
+
 ## AI evaluation benchmark
 
-The current schema-guided Text-to-Cypher pipeline can be evaluated
-against deterministic ground truth derived from the synthetic graph.
+The schema-guided Text-to-Cypher pipeline can be evaluated against deterministic ground truth derived from the synthetic graph.
 
 The benchmark contains 12 questions across:
 
@@ -281,9 +359,7 @@ Answer correct: 12/12
 Fully correct: 12/12
 ```
 
-The configured model was `auto`, so this single baseline run is not
-evidence of deterministic AI behavior. During calibration, structurally
-different valid Cypher queries were observed across repeated runs.
+The configured model was `auto`, so this single baseline run is not evidence of deterministic AI behavior. During calibration, structurally different valid Cypher queries were observed across repeated runs.
 
 See `evaluation/README.md` for benchmark design and scoring details.
 
@@ -295,8 +371,7 @@ Run the complete benchmark repeatedly to measure run-to-run reliability:
 python src\run_reliability_evaluation.py --runs 5
 ```
 
-The reliability experiment measures perfect-run rate, fully correct case
-rate, retries, failure types, and Cypher variation.
+The reliability experiment measures perfect-run rate, fully correct case rate, retries, failure types, and Cypher variation.
 
 A five-run experiment on September 10, 2026 produced:
 
@@ -306,9 +381,7 @@ A five-run experiment on September 10, 2026 produced:
 0/60 executions requiring retry
 ```
 
-Multiple valid Cypher formulations were observed for every benchmark
-case, showing that generation can vary while retrieval and answer
-correctness remain stable.
+Multiple valid Cypher formulations were observed for every benchmark case, showing that generation can vary while retrieval and answer correctness remain stable.
 
 See [docs/08-ai-reliability.md](docs/08-ai-reliability.md) for details.
 
@@ -351,6 +424,60 @@ python src\run_retrieval_experiment.py --output evaluation\results\retrieval-exp
 
 See [docs/09-retrieval-experiment.md](docs/09-retrieval-experiment.md) for methodology, results, and limitations.
 
+### Minimal tool-calling agent evaluation
+
+The project contains a separate benchmark for the minimal agent layer.
+
+The benchmark contains:
+
+```text
+5 graph-required questions
+3 no-graph-required questions
+```
+
+It evaluates:
+
+- correct graph-tool selection;
+- correct graph-tool avoidance;
+- maximum tool-call count;
+- tool execution success;
+- presence of expected answer values;
+- no-result handling.
+
+The final observed run produced:
+
+```text
+Execution:                  8/8
+Fully correct:              8/8
+Tool selection correct:     8/8
+Tool call count correct:    8/8
+Tool execution success:     8/8
+Answer values complete:     8/8
+No-result handling correct: 8/8
+```
+
+All five project-data questions used `graph_retrieval` exactly once.
+
+All three questions that did not require project graph data used zero graph tool calls.
+
+Run the agent benchmark:
+
+```cmd
+python src\run_agent_evaluation.py
+```
+
+Run it and save the structured observed result:
+
+```cmd
+python src\run_agent_evaluation.py --output evaluation\results\agent-evaluation.json
+```
+
+The benchmark uses deterministic checks rather than an LLM judge.
+
+`Answer values complete` verifies that required benchmark values appear in the generated answer. It does not semantically verify every sentence produced by the agent.
+
+See [docs/10-minimal-tool-calling-agent.md](docs/10-minimal-tool-calling-agent.md) for architecture, benchmark design, results, and limitations.
+
 ## Run automated tests
 
 Run the complete test suite:
@@ -387,6 +514,11 @@ The test suite covers:
 - retrieval benchmark definition validation;
 - deterministic flat lexical retrieval;
 - retrieval evidence scoring and flat-vs-graph experiment behavior;
+- minimal graph-retrieval tool behavior;
+- agent service behavior with and without tool use;
+- agent benchmark definition validation;
+- deterministic agent-response evaluation;
+- agent evaluation runner behavior.
 
 ## Current safety controls
 
@@ -398,7 +530,10 @@ The prototype:
 - requires `MATCH` and `RETURN`;
 - limits query execution time;
 - limits the number of returned records;
-- permits at most one Cypher correction attempt.
+- permits at most one Cypher correction attempt;
+- exposes only one custom tool to the minimal agent;
+- permits at most one graph tool invocation per user question;
+- does not expose graph write operations to the agent.
 
 The Cypher validator is a best-effort safety filter, not a complete authorization boundary. The project should only use synthetic data in a local, isolated Neo4j instance.
 
@@ -409,9 +544,15 @@ The Cypher validator is a best-effort safety filter, not a complete authorizatio
 - Empty-result retry is conservative and currently requires explicit entity IDs from the question that can be confirmed in the graph.
 - `COPILOT_MODEL=auto` can select different models over time.
 - The automated AI benchmark contains 12 synthetic cases and should be treated as PoC regression evidence, not production-level reliability evidence.
+- The retrieval experiment contains only 10 synthetic benchmark cases.
 - There is no vector retrieval or hybrid retrieval.
-- The pipeline is fixed and is not an autonomous agent.
+- The agent is intentionally minimal: it exposes only one custom graph-retrieval tool and permits at most one graph tool invocation per question.
+- The agent benchmark contains only eight synthetic cases and should be treated as PoC evidence, not production-level agent reliability evidence.
+- Agent answer evaluation checks required values and selected no-result behavior; it does not semantically verify every generated statement.
+- The project does not include multi-agent workflows, autonomous write actions, or MCP tools.
 - The Data Contract format is project-specific, not an industry-standard specification.
 - The project is not intended for production use.
 
-More details about the AI experiment are available in [docs/07-ontology-aware-ai-querying.md](docs/07-ontology-aware-ai-querying.md).
+More details about the AI retrieval pipeline are available in [docs/07-ontology-aware-ai-querying.md](docs/07-ontology-aware-ai-querying.md).
+
+Detailed agent documentation is available in [docs/10-minimal-tool-calling-agent.md](docs/10-minimal-tool-calling-agent.md).
