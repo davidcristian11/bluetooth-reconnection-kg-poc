@@ -1,0 +1,183 @@
+version: 1
+
+description: >
+  Retrieval comparison benchmark for the Bluetooth Reconnection
+  Knowledge Graph PoC. The same questions will be evaluated against a
+  flat lexical retriever and the current schema-guided graph retriever.
+  Expected evidence is derived from the deterministic synthetic dataset.
+
+defaultTopK: 10
+
+cases:
+  - id: RET-001
+    category: direct_relationship
+    question: "What requirement does TEST-006 verify?"
+    expected:
+      result: non_empty
+      required_values:
+        - REQ-006
+      exact_id_sets:
+        REQ:
+          - REQ-006
+
+  - id: RET-002
+    category: direct_relationship
+    question: "Which software component is affected by DEF-003?"
+    expected:
+      result: non_empty
+      required_values:
+        - COMP-004
+      exact_id_sets:
+        COMP:
+          - COMP-004
+
+  - id: RET-003
+    category: one_to_many
+    question: "Which traces were produced by EXEC-006?"
+    expected:
+      result: non_empty
+      required_values:
+        - TRACE-003
+        - TRACE-004
+        - TRACE-005
+      exact_id_sets:
+        TRACE:
+          - TRACE-003
+          - TRACE-004
+          - TRACE-005
+
+  - id: RET-004
+    category: one_to_many
+    question: "Which tests verify REQ-004?"
+    expected:
+      result: non_empty
+      required_values:
+        - TEST-004
+        - TEST-008
+        - TEST-009
+      exact_id_sets:
+        TEST:
+          - TEST-004
+          - TEST-008
+          - TEST-009
+
+  - id: RET-005
+    category: multi_hop
+    question: "What happened during EXEC-010?"
+    topK: 15
+    expected:
+      result: non_empty
+      required_values:
+        - EXEC-010
+        - FAIL
+        - 18.0
+        - TEST-002
+        - REQ-002
+        - TRACE-006
+        - TRACE-007
+        - TRACE-008
+        - DEF-001
+        - COMP-002
+      exact_id_sets:
+        EXEC:
+          - EXEC-010
+        TEST:
+          - TEST-002
+        REQ:
+          - REQ-002
+        TRACE:
+          - TRACE-006
+          - TRACE-007
+          - TRACE-008
+        DEF:
+          - DEF-001
+        COMP:
+          - COMP-002
+
+  - id: RET-006
+    category: multi_hop
+    question: >
+      Which defect ticket is linked to EXEC-012 and which software
+      component does that defect affect?
+    expected:
+      result: non_empty
+      required_values:
+        - DEF-002
+        - COMP-005
+      exact_id_sets:
+        DEF:
+          - DEF-002
+        COMP:
+          - COMP-005
+
+  - id: RET-007
+    category: cross_source
+    question: >
+      Which source systems contribute facts to the investigation of
+      EXEC-010?
+    topK: 20
+    expected:
+      result: non_empty
+      required_values:
+        - ProductDefinitionSystem
+        - RequirementsSystem
+        - SoftwareArchitectureSystem
+        - TestManagementSystem
+        - TraceRepository
+        - DefectTrackingSystem
+
+  - id: RET-008
+    category: cross_environment
+    question: >
+      Which defect ticket is linked to failed executions in more than
+      one test environment, and which environments are involved?
+    topK: 20
+    expected:
+      result: non_empty
+      required_values:
+        - DEF-001
+        - SiL
+        - HiL
+        - Vehicle
+      exact_id_sets:
+        DEF:
+          - DEF-001
+
+  - id: RET-009
+    category: filtering
+    question: >
+      Which test executions verifying REQ-002 exceeded the 10-second
+      reconnection requirement?
+    topK: 20
+    expected:
+      result: non_empty
+      required_values:
+        - EXEC-003
+        - EXEC-006
+        - EXEC-008
+        - EXEC-010
+        - EXEC-016
+      exact_id_sets:
+        EXEC:
+          - EXEC-003
+          - EXEC-006
+          - EXEC-008
+          - EXEC-010
+          - EXEC-016
+
+  - id: RET-010
+    category: aggregation
+    question: "How many test executions passed and failed in each environment?"
+    topK: 20
+    expected:
+      result: non_empty
+      environment_result_counts:
+        SiL:
+          PASS: 4
+          FAIL: 1
+        HiL:
+          PASS: 2
+          FAIL: 2
+        Vehicle:
+          PASS: 3
+          FAIL: 4
