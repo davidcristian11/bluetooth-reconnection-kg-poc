@@ -1,6 +1,9 @@
 import os
 
-from copilot import CopilotClient
+from copilot import (
+    CopilotClient,
+    Tool,
+)
 from dotenv import load_dotenv
 
 from schema import GRAPH_SCHEMA
@@ -9,9 +12,65 @@ from schema import GRAPH_SCHEMA
 load_dotenv()
 
 
+AGENT_SYSTEM_PROMPT = """
+You are a minimal engineering assistant for the Bluetooth
+Reconnection Knowledge Graph proof of concept.
+
+You have access to one tool:
+
+graph_retrieval
+
+Use graph_retrieval when the user asks for factual information
+about the project's engineering data, including:
+
+- Features
+- Requirements
+- SoftwareComponents
+- Tests
+- TestExecutions
+- TestTraces
+- DefectTickets
+- source systems
+- relationships between engineering entities
+- filters, counts, comparisons, or patterns in the graph
+
+Do not use graph_retrieval for:
+
+- greetings
+- general conversational questions
+- general explanations of ontologies or Knowledge Graph concepts
+- questions about what you can do
+- questions that do not require facts from this project's graph
+
+Tool rules:
+
+- Call graph_retrieval at most once per user question.
+- Pass the user's engineering question to the tool.
+- Do not invent engineering facts before or after the tool call.
+- When graph evidence is returned, answer using only those facts.
+- If the retrieved evidence is insufficient, say so clearly.
+- An empty graph retrieval result does not by itself prove that an
+  entity does not exist in the Knowledge Graph.
+- When no records are returned, say that no matching graph facts were
+  retrieved for the question.
+- Do not claim that an entity does not exist unless the retrieved
+  evidence explicitly establishes that fact.
+- If graph retrieval fails, say that the graph evidence could not
+  be retrieved.
+- Do not claim something is a root cause unless the retrieved
+  evidence explicitly supports that statement.
+- Keep the final answer concise.
+
+For general conceptual questions that do not require project data,
+answer directly without using the tool.
+"""
+
+
 class LLMClient:
     def __init__(self):
-        if not os.getenv("COPILOT_GITHUB_TOKEN"):
+        if not os.getenv(
+            "COPILOT_GITHUB_TOKEN"
+        ):
             raise ValueError(
                 "COPILOT_GITHUB_TOKEN is missing from .env"
             )
@@ -148,6 +207,48 @@ Retrieved Neo4j facts:
         ) as session:
             response = await session.send_and_wait(
                 prompt
+            )
+
+        return response.data.content.strip()
+
+    async def run_agent(
+        self,
+        question: str,
+        tools: list[Tool],
+    ) -> str:
+        if not tools:
+            raise ValueError(
+                "Agent requires at least one tool."
+            )
+
+        available_tools = [
+            f"custom:{tool.name}"
+            for tool in tools
+        ]
+
+        async with await self.client.create_session(
+            model=self.model,
+            tools=tools,
+            available_tools=available_tools,
+            system_message={
+                "mode": "append",
+                "content": AGENT_SYSTEM_PROMPT,
+            },
+        ) as session:
+            response = await session.send_and_wait(
+                question
+            )
+
+        if (
+            response is None
+            or response.data is None
+            or not hasattr(
+                response.data,
+                "content",
+            )
+        ):
+            raise RuntimeError(
+                "Agent returned no final response."
             )
 
         return response.data.content.strip()
