@@ -312,6 +312,45 @@ correctness remain stable.
 
 See [docs/08-ai-reliability.md](docs/08-ai-reliability.md) for details.
 
+### Retrieval experiment
+
+The project also contains a controlled retrieval experiment comparing:
+
+```text
+Flat lexical retrieval
+vs
+Schema-guided graph retrieval
+```
+
+Both strategies are evaluated against the same 10-case benchmark before final-answer generation.
+
+An observed run produced:
+
+```text
+                     Flat        Graph
+Complete evidence     7/10        9/10
+Mean recall           0.847       0.980
+Mean precision        0.492       1.000
+```
+
+The experiment showed that flat retrieval can be sufficient for simple direct lookups, while graph retrieval was substantially more selective and showed its clearest advantage for cross-source investigation, structured filtering, and relationship-dependent analysis.
+
+The experiment also preserved one incomplete graph case, demonstrating that:
+
+```text
+graph capability != retrieval decision
+```
+
+The graph can contain relevant context that a generated Cypher query does not retrieve.
+
+Run the comparison:
+
+```cmd
+python src\run_retrieval_experiment.py --output evaluation\results\retrieval-experiment.json
+```
+
+See [docs/09-retrieval-experiment.md](docs/09-retrieval-experiment.md) for methodology, results, and limitations.
+
 ## Run automated tests
 
 Run the complete test suite:
@@ -344,7 +383,10 @@ The test suite covers:
 - AI benchmark definition validation;
 - deterministic retrieval and answer scoring;
 - benchmark outcome classification;
-- evaluation-runner success and failure behavior.
+- evaluation-runner success and failure behavior;
+- retrieval benchmark definition validation;
+- deterministic flat lexical retrieval;
+- retrieval evidence scoring and flat-vs-graph experiment behavior;
 
 ## Current safety controls
 

@@ -25,6 +25,15 @@ ENTITY_ID_PATTERN = re.compile(
 
 
 @dataclass
+class GraphRetrievalResponse:
+    question: str
+    cypher: str
+    records: list[dict]
+    generation_attempts: int
+    retry_reason: str | None
+
+
+@dataclass
 class QueryResponse:
     question: str
     cypher: str
@@ -84,10 +93,10 @@ class QueryService:
             referenced_ids,
         )
 
-    async def answer_question(
+    async def retrieve_question(
         self,
         question: str,
-    ) -> QueryResponse:
+    ) -> GraphRetrievalResponse:
         previous_cypher = None
         previous_feedback = None
         retry_reason = None
@@ -136,7 +145,13 @@ class QueryService:
                         )
                         continue
 
-                break
+                return GraphRetrievalResponse(
+                    question=question,
+                    cypher=cypher,
+                    records=records,
+                    generation_attempts=attempt,
+                    retry_reason=retry_reason,
+                )
 
             except UnsafeCypherError as error:
                 raise RuntimeError(
@@ -181,23 +196,37 @@ class QueryService:
                         "after two attempts."
                     ) from error
 
+        raise RuntimeError(
+            "Graph retrieval ended without a result."
+        )
+
+    async def answer_question(
+        self,
+        question: str,
+    ) -> QueryResponse:
+        retrieval = await self.retrieve_question(
+            question
+        )
+
         graph_result = json.dumps(
-            records,
+            retrieval.records,
             indent=2,
             default=str,
         )
 
         answer = await self.llm.generate_answer(
             question=question,
-            cypher=cypher,
+            cypher=retrieval.cypher,
             graph_result=graph_result,
         )
 
         return QueryResponse(
             question=question,
-            cypher=cypher,
-            records=records,
+            cypher=retrieval.cypher,
+            records=retrieval.records,
             answer=answer,
-            generation_attempts=attempt,
-            retry_reason=retry_reason,
+            generation_attempts=(
+                retrieval.generation_attempts
+            ),
+            retry_reason=retrieval.retry_reason,
         )
