@@ -1,0 +1,2214 @@
+{
+  "provenance": {
+    "description": "Static presentation snapshot derived from repository sources. Evaluation results are saved observations, not live executions.",
+    "inputs": [
+      {
+        "path": "contracts/defect_ticket_affects_component.yaml",
+        "sha256": "d044bec511acf9e02a59f0149e42a2b9d2c9ba0e703a2f4b7279a0f2657bd623"
+      },
+      {
+        "path": "contracts/defect_tickets.yaml",
+        "sha256": "4420a35159c6148450b9cb5f73a831a88357bb7d8abeddd1daab6ff7ed7cfe7b"
+      },
+      {
+        "path": "contracts/feature_has_requirement.yaml",
+        "sha256": "5777d5ed00e118299b93b46f8a3e112c5e1c617645ada6755034ab689fe57dff"
+      },
+      {
+        "path": "contracts/features.yaml",
+        "sha256": "f2895eb74868ecb9f704a631e96e0113817aa02b4ae99246836a4bf460ce1cdf"
+      },
+      {
+        "path": "contracts/requirements.yaml",
+        "sha256": "8b8cb97b3911e7692e77b6a588aa6e17c852b7e0cf0106ab19c0082a42fbb63b"
+      },
+      {
+        "path": "contracts/software_component_implements_requirement.yaml",
+        "sha256": "fc2c240fd677a75ad529a1873b50c50fa2ea037cabb53408f74c7184077199bc"
+      },
+      {
+        "path": "contracts/software_components.yaml",
+        "sha256": "95b7f64d31ae8e84a6c0b9ad41d94ac0b1881877c5a3b4eeb4708debe3b39656"
+      },
+      {
+        "path": "contracts/test_execution_execution_of_test.yaml",
+        "sha256": "56ae5f2d18fd2b85bf099afb07c54cdf9949732343caa36e8465dee6f1d87c4c"
+      },
+      {
+        "path": "contracts/test_execution_has_defect_ticket.yaml",
+        "sha256": "a15b67d10512aa7fafce73d0eff34d2995a5b78c5e59c17794e98ba51c8b6806"
+      },
+      {
+        "path": "contracts/test_execution_produces_trace.yaml",
+        "sha256": "3697be7d34ff7957260916c9f984147de8bbdd2b01b7d960659c888c12450469"
+      },
+      {
+        "path": "contracts/test_executions.yaml",
+        "sha256": "2a7b82b3059f199268f7c8cfa5a1d0a747add75d49fc07d392742bcf083f9487"
+      },
+      {
+        "path": "contracts/test_traces.yaml",
+        "sha256": "29fe7598fd3adaf090d57c77aedf991d080730f6716df409a3a56d3da2cb958a"
+      },
+      {
+        "path": "contracts/test_verifies_requirement.yaml",
+        "sha256": "6c5946208c1ace736909ae9a2cf958fe619cee3dabf7bf87b957f10e72f82c2f"
+      },
+      {
+        "path": "contracts/tests.yaml",
+        "sha256": "6caa72ae167b310f26888075e851d5d8eaf479c262474f238e8cf6efd49f7c3f"
+      },
+      {
+        "path": "data/nodes/defect_tickets.csv",
+        "sha256": "dec3adbb4d35446282d50f7c0ce282af22ee400f247cfb0a4025565cb9842b30"
+      },
+      {
+        "path": "data/nodes/features.csv",
+        "sha256": "5483d5c7da55c59914c661d3954a4a86373ad979b9232ac774030bf0be68d3ab"
+      },
+      {
+        "path": "data/nodes/requirements.csv",
+        "sha256": "f2a2f8bd90d03f018c658d55c7dbb2ea2f9284fbf28164e90f56f5b078758313"
+      },
+      {
+        "path": "data/nodes/software_components.csv",
+        "sha256": "f7cebe4b30fe64b8397c927493778d8d9ffd0150f7a09c62e4e95ef5fef908e0"
+      },
+      {
+        "path": "data/nodes/test_executions.csv",
+        "sha256": "c6b1b1fe51683ae79de841e41a26334a50e1ae5720338ed287f4c14fdeb1bbce"
+      },
+      {
+        "path": "data/nodes/test_traces.csv",
+        "sha256": "e7b79e0f97ab804d30150a6c120775065a87115c982eab43955686aa12510549"
+      },
+      {
+        "path": "data/nodes/tests.csv",
+        "sha256": "c03892f174242cefbbe8a5c2401f3a4dfa0051fba6b1ff57d47fbd6f50594317"
+      },
+      {
+        "path": "data/relationships/defect_ticket_affects_component.csv",
+        "sha256": "7bf2112f281db7ec54b68eab2847c30e93ab4e75642ed7bae9bdb3bf7a78d1ee"
+      },
+      {
+        "path": "data/relationships/feature_has_requirement.csv",
+        "sha256": "364cbca507cd8087bb15efbb590db719625a0118d847457fb8715a6c7a822f68"
+      },
+      {
+        "path": "data/relationships/software_component_implements_requirement.csv",
+        "sha256": "7d27c97399f2c4ab84bac51331c77d879d821df3b6e0243125d0ff351d9c1994"
+      },
+      {
+        "path": "data/relationships/test_execution_execution_of_test.csv",
+        "sha256": "3d31385e1e4ddee95eb043497c13dab78f07589cac6feb2528827e1e824f8e53"
+      },
+      {
+        "path": "data/relationships/test_execution_has_defect_ticket.csv",
+        "sha256": "bc1585470d5aaaba4af19f624a158ba385ba6e83d9437f05a96ab95e8a37e64f"
+      },
+      {
+        "path": "data/relationships/test_execution_produces_trace.csv",
+        "sha256": "54f16bc792a86ea8e1cc789dd2bbbf925004ef7d3b3cc8fe84d2aa5f3d5546c5"
+      },
+      {
+        "path": "data/relationships/test_verifies_requirement.csv",
+        "sha256": "c3b9863bb3f859ff047d7d29c146f3c847481169f67424cf832b3c7da8d32964"
+      },
+      {
+        "path": "evaluation/results/agent-evaluation.json",
+        "sha256": "ef63f21d2b91371eea6b41d9118973ccca7f4e29100b61e7bbe82a753c269fa3"
+      },
+      {
+        "path": "evaluation/results/retrieval-experiment.json",
+        "sha256": "4f763e22ea936bc5044327bef35646ed32e5b7081d04fc5fcf1880c03d3c88f9"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "DEF-001",
+      "label": "DefectTicket",
+      "properties": {
+        "id": "DEF-001",
+        "title": "Delayed Bluetooth reconnection after ignition",
+        "description": "Bluetooth reconnection sometimes exceeds the 10-second requirement because the connection request remains queued longer than expected.",
+        "status": "Open",
+        "severity": "Critical",
+        "createdDate": "2026-07-17",
+        "sourceSystem": "DefectTrackingSystem"
+      },
+      "file": "data/nodes/defect_tickets.csv"
+    },
+    {
+      "id": "DEF-002",
+      "label": "DefectTicket",
+      "properties": {
+        "id": "DEF-002",
+        "title": "Missing reconnection completion diagnostic event",
+        "description": "The diagnostic service does not always record the completion event for a successful reconnection attempt.",
+        "status": "In Progress",
+        "severity": "Medium",
+        "createdDate": "2026-07-22",
+        "sourceSystem": "DefectTrackingSystem"
+      },
+      "file": "data/nodes/defect_tickets.csv"
+    },
+    {
+      "id": "DEF-003",
+      "label": "DefectTicket",
+      "properties": {
+        "id": "DEF-003",
+        "title": "Media audio profile not restored",
+        "description": "The phone reconnects successfully but the media audio profile is not restored in some vehicle executions.",
+        "status": "Resolved",
+        "severity": "High",
+        "createdDate": "2026-07-24",
+        "sourceSystem": "DefectTrackingSystem"
+      },
+      "file": "data/nodes/defect_tickets.csv"
+    },
+    {
+      "id": "FEAT-001",
+      "label": "Feature",
+      "properties": {
+        "id": "FEAT-001",
+        "name": "Bluetooth Phone Automatic Reconnection",
+        "description": "Automatically reconnect a previously paired Bluetooth phone after a vehicle ignition cycle.",
+        "sourceSystem": "ProductDefinitionSystem"
+      },
+      "file": "data/nodes/features.csv"
+    },
+    {
+      "id": "REQ-001",
+      "label": "Requirement",
+      "properties": {
+        "id": "REQ-001",
+        "title": "Automatic reconnection after ignition",
+        "description": "The system shall automatically reconnect a previously paired phone after the vehicle ignition is switched on.",
+        "priority": "High",
+        "status": "Approved",
+        "sourceSystem": "RequirementsSystem"
+      },
+      "file": "data/nodes/requirements.csv"
+    },
+    {
+      "id": "REQ-002",
+      "label": "Requirement",
+      "properties": {
+        "id": "REQ-002",
+        "title": "Reconnection within ten seconds",
+        "description": "The system shall complete Bluetooth phone reconnection within 10 seconds after the Bluetooth subsystem becomes available.",
+        "priority": "Critical",
+        "status": "Approved",
+        "sourceSystem": "RequirementsSystem"
+      },
+      "file": "data/nodes/requirements.csv"
+    },
+    {
+      "id": "REQ-003",
+      "label": "Requirement",
+      "properties": {
+        "id": "REQ-003",
+        "title": "Reuse stored pairing information",
+        "description": "The system shall use stored pairing information to reconnect the phone without requiring the user to repeat the pairing process.",
+        "priority": "High",
+        "status": "Approved",
+        "sourceSystem": "RequirementsSystem"
+      },
+      "file": "data/nodes/requirements.csv"
+    },
+    {
+      "id": "REQ-004",
+      "label": "Requirement",
+      "properties": {
+        "id": "REQ-004",
+        "title": "Transient reconnection retry",
+        "description": "The system shall retry the Bluetooth connection once when the first reconnection attempt fails because of a transient communication error.",
+        "priority": "Medium",
+        "status": "Approved",
+        "sourceSystem": "RequirementsSystem"
+      },
+      "file": "data/nodes/requirements.csv"
+    },
+    {
+      "id": "REQ-005",
+      "label": "Requirement",
+      "properties": {
+        "id": "REQ-005",
+        "title": "Restore supported Bluetooth profiles",
+        "description": "After reconnection, the system shall restore the supported phone and media audio profiles.",
+        "priority": "High",
+        "status": "Approved",
+        "sourceSystem": "RequirementsSystem"
+      },
+      "file": "data/nodes/requirements.csv"
+    },
+    {
+      "id": "REQ-006",
+      "label": "Requirement",
+      "properties": {
+        "id": "REQ-006",
+        "title": "Record reconnection diagnostics",
+        "description": "The system shall record diagnostic events for the start, completion, failure, and duration of each reconnection attempt.",
+        "priority": "Medium",
+        "status": "Approved",
+        "sourceSystem": "RequirementsSystem"
+      },
+      "file": "data/nodes/requirements.csv"
+    },
+    {
+      "id": "REQ-007",
+      "label": "Requirement",
+      "properties": {
+        "id": "REQ-007",
+        "title": "Handle Bluetooth-disabled phones",
+        "description": "The system shall stop automatic reconnection attempts when Bluetooth is disabled on the paired phone.",
+        "priority": "Low",
+        "status": "Draft",
+        "sourceSystem": "RequirementsSystem"
+      },
+      "file": "data/nodes/requirements.csv"
+    },
+    {
+      "id": "COMP-001",
+      "label": "SoftwareComponent",
+      "properties": {
+        "id": "COMP-001",
+        "name": "Vehicle State Adapter",
+        "description": "Receives vehicle ignition and power-state events and makes them available to the connectivity software.",
+        "version": "1.2.0",
+        "sourceSystem": "SoftwareArchitectureSystem"
+      },
+      "file": "data/nodes/software_components.csv"
+    },
+    {
+      "id": "COMP-002",
+      "label": "SoftwareComponent",
+      "properties": {
+        "id": "COMP-002",
+        "name": "Bluetooth Connection Manager",
+        "description": "Controls automatic Bluetooth reconnection attempts, retry behavior, connection timing, and cancellation.",
+        "version": "2.3.0",
+        "sourceSystem": "SoftwareArchitectureSystem"
+      },
+      "file": "data/nodes/software_components.csv"
+    },
+    {
+      "id": "COMP-003",
+      "label": "SoftwareComponent",
+      "properties": {
+        "id": "COMP-003",
+        "name": "Pairing Data Store",
+        "description": "Stores and retrieves pairing credentials and metadata for previously paired Bluetooth devices.",
+        "version": "1.4.1",
+        "sourceSystem": "SoftwareArchitectureSystem"
+      },
+      "file": "data/nodes/software_components.csv"
+    },
+    {
+      "id": "COMP-004",
+      "label": "SoftwareComponent",
+      "properties": {
+        "id": "COMP-004",
+        "name": "Bluetooth Profile Service",
+        "description": "Restores supported Bluetooth profiles such as phone audio and media audio after a connection is established.",
+        "version": "3.1.0",
+        "sourceSystem": "SoftwareArchitectureSystem"
+      },
+      "file": "data/nodes/software_components.csv"
+    },
+    {
+      "id": "COMP-005",
+      "label": "SoftwareComponent",
+      "properties": {
+        "id": "COMP-005",
+        "name": "Connectivity Diagnostics Service",
+        "description": "Records diagnostic events and timing information for Bluetooth connection attempts.",
+        "version": "1.2.0",
+        "sourceSystem": "SoftwareArchitectureSystem"
+      },
+      "file": "data/nodes/software_components.csv"
+    },
+    {
+      "id": "EXEC-001",
+      "label": "TestExecution",
+      "properties": {
+        "id": "EXEC-001",
+        "executionDate": "2026-07-14",
+        "environment": "SiL",
+        "result": "PASS",
+        "reconnectionTimeSeconds": "6.8",
+        "softwareVersion": "2.3.0",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/test_executions.csv"
+    },
+    {
+      "id": "EXEC-002",
+      "label": "TestExecution",
+      "properties": {
+        "id": "EXEC-002",
+        "executionDate": "2026-07-14",
+        "environment": "SiL",
+        "result": "PASS",
+        "reconnectionTimeSeconds": "7.4",
+        "softwareVersion": "2.3.0",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/test_executions.csv"
+    },
+    {
+      "id": "EXEC-003",
+      "label": "TestExecution",
+      "properties": {
+        "id": "EXEC-003",
+        "executionDate": "2026-07-15",
+        "environment": "SiL",
+        "result": "FAIL",
+        "reconnectionTimeSeconds": "12.1",
+        "softwareVersion": "2.3.0",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/test_executions.csv"
+    },
+    {
+      "id": "EXEC-004",
+      "label": "TestExecution",
+      "properties": {
+        "id": "EXEC-004",
+        "executionDate": "2026-07-15",
+        "environment": "SiL",
+        "result": "PASS",
+        "reconnectionTimeSeconds": "5.9",
+        "softwareVersion": "2.3.0",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/test_executions.csv"
+    },
+    {
+      "id": "EXEC-005",
+      "label": "TestExecution",
+      "properties": {
+        "id": "EXEC-005",
+        "executionDate": "2026-07-16",
+        "environment": "SiL",
+        "result": "PASS",
+        "reconnectionTimeSeconds": "9.6",
+        "softwareVersion": "2.3.0",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/test_executions.csv"
+    },
+    {
+      "id": "EXEC-006",
+      "label": "TestExecution",
+      "properties": {
+        "id": "EXEC-006",
+        "executionDate": "2026-07-17",
+        "environment": "HiL",
+        "result": "FAIL",
+        "reconnectionTimeSeconds": "15.4",
+        "softwareVersion": "2.3.0",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/test_executions.csv"
+    },
+    {
+      "id": "EXEC-007",
+      "label": "TestExecution",
+      "properties": {
+        "id": "EXEC-007",
+        "executionDate": "2026-07-18",
+        "environment": "HiL",
+        "result": "PASS",
+        "reconnectionTimeSeconds": "9.3",
+        "softwareVersion": "2.3.0",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/test_executions.csv"
+    },
+    {
+      "id": "EXEC-008",
+      "label": "TestExecution",
+      "properties": {
+        "id": "EXEC-008",
+        "executionDate": "2026-07-18",
+        "environment": "HiL",
+        "result": "FAIL",
+        "reconnectionTimeSeconds": "13.8",
+        "softwareVersion": "2.3.0",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/test_executions.csv"
+    },
+    {
+      "id": "EXEC-009",
+      "label": "TestExecution",
+      "properties": {
+        "id": "EXEC-009",
+        "executionDate": "2026-07-19",
+        "environment": "HiL",
+        "result": "PASS",
+        "reconnectionTimeSeconds": "8.7",
+        "softwareVersion": "2.3.0",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/test_executions.csv"
+    },
+    {
+      "id": "EXEC-010",
+      "label": "TestExecution",
+      "properties": {
+        "id": "EXEC-010",
+        "executionDate": "2026-07-21",
+        "environment": "Vehicle",
+        "result": "FAIL",
+        "reconnectionTimeSeconds": "18.0",
+        "softwareVersion": "2.3.0",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/test_executions.csv"
+    },
+    {
+      "id": "EXEC-011",
+      "label": "TestExecution",
+      "properties": {
+        "id": "EXEC-011",
+        "executionDate": "2026-07-21",
+        "environment": "Vehicle",
+        "result": "PASS",
+        "reconnectionTimeSeconds": "7.9",
+        "softwareVersion": "2.3.0",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/test_executions.csv"
+    },
+    {
+      "id": "EXEC-012",
+      "label": "TestExecution",
+      "properties": {
+        "id": "EXEC-012",
+        "executionDate": "2026-07-22",
+        "environment": "Vehicle",
+        "result": "FAIL",
+        "reconnectionTimeSeconds": "8.1",
+        "softwareVersion": "2.3.0",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/test_executions.csv"
+    },
+    {
+      "id": "EXEC-013",
+      "label": "TestExecution",
+      "properties": {
+        "id": "EXEC-013",
+        "executionDate": "2026-07-23",
+        "environment": "Vehicle",
+        "result": "PASS",
+        "reconnectionTimeSeconds": "9.8",
+        "softwareVersion": "2.3.0",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/test_executions.csv"
+    },
+    {
+      "id": "EXEC-014",
+      "label": "TestExecution",
+      "properties": {
+        "id": "EXEC-014",
+        "executionDate": "2026-07-24",
+        "environment": "Vehicle",
+        "result": "FAIL",
+        "reconnectionTimeSeconds": "8.6",
+        "softwareVersion": "2.3.0",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/test_executions.csv"
+    },
+    {
+      "id": "EXEC-015",
+      "label": "TestExecution",
+      "properties": {
+        "id": "EXEC-015",
+        "executionDate": "2026-07-25",
+        "environment": "Vehicle",
+        "result": "PASS",
+        "reconnectionTimeSeconds": "9.7",
+        "softwareVersion": "2.3.0",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/test_executions.csv"
+    },
+    {
+      "id": "EXEC-016",
+      "label": "TestExecution",
+      "properties": {
+        "id": "EXEC-016",
+        "executionDate": "2026-07-26",
+        "environment": "Vehicle",
+        "result": "FAIL",
+        "reconnectionTimeSeconds": "11.6",
+        "softwareVersion": "2.3.0",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/test_executions.csv"
+    },
+    {
+      "id": "TRACE-001",
+      "label": "TestTrace",
+      "properties": {
+        "id": "TRACE-001",
+        "timestamp": "2026-07-15T09:12:02",
+        "level": "INFO",
+        "message": "Automatic reconnection attempt started.",
+        "sourceSystem": "TraceRepository"
+      },
+      "file": "data/nodes/test_traces.csv"
+    },
+    {
+      "id": "TRACE-002",
+      "label": "TestTrace",
+      "properties": {
+        "id": "TRACE-002",
+        "timestamp": "2026-07-15T09:12:14",
+        "level": "WARN",
+        "message": "Reconnection completed in 12.1 seconds and exceeded the 10-second limit.",
+        "sourceSystem": "TraceRepository"
+      },
+      "file": "data/nodes/test_traces.csv"
+    },
+    {
+      "id": "TRACE-003",
+      "label": "TestTrace",
+      "properties": {
+        "id": "TRACE-003",
+        "timestamp": "2026-07-17T11:30:04",
+        "level": "INFO",
+        "message": "Bluetooth subsystem available; reconnection request submitted.",
+        "sourceSystem": "TraceRepository"
+      },
+      "file": "data/nodes/test_traces.csv"
+    },
+    {
+      "id": "TRACE-004",
+      "label": "TestTrace",
+      "properties": {
+        "id": "TRACE-004",
+        "timestamp": "2026-07-17T11:30:12",
+        "level": "WARN",
+        "message": "Device service discovery response was delayed.",
+        "sourceSystem": "TraceRepository"
+      },
+      "file": "data/nodes/test_traces.csv"
+    },
+    {
+      "id": "TRACE-005",
+      "label": "TestTrace",
+      "properties": {
+        "id": "TRACE-005",
+        "timestamp": "2026-07-17T11:30:19",
+        "level": "ERROR",
+        "message": "Reconnection completed in 15.4 seconds and exceeded the 10-second limit.",
+        "sourceSystem": "TraceRepository"
+      },
+      "file": "data/nodes/test_traces.csv"
+    },
+    {
+      "id": "TRACE-006",
+      "label": "TestTrace",
+      "properties": {
+        "id": "TRACE-006",
+        "timestamp": "2026-07-21T08:45:03",
+        "level": "INFO",
+        "message": "Vehicle ignition event received.",
+        "sourceSystem": "TraceRepository"
+      },
+      "file": "data/nodes/test_traces.csv"
+    },
+    {
+      "id": "TRACE-007",
+      "label": "TestTrace",
+      "properties": {
+        "id": "TRACE-007",
+        "timestamp": "2026-07-21T08:45:12",
+        "level": "WARN",
+        "message": "Reconnection request remained in the connection queue for 8.9 seconds.",
+        "sourceSystem": "TraceRepository"
+      },
+      "file": "data/nodes/test_traces.csv"
+    },
+    {
+      "id": "TRACE-008",
+      "label": "TestTrace",
+      "properties": {
+        "id": "TRACE-008",
+        "timestamp": "2026-07-21T08:45:21",
+        "level": "ERROR",
+        "message": "Phone reconnected in 18.0 seconds and exceeded the 10-second limit.",
+        "sourceSystem": "TraceRepository"
+      },
+      "file": "data/nodes/test_traces.csv"
+    },
+    {
+      "id": "TRACE-009",
+      "label": "TestTrace",
+      "properties": {
+        "id": "TRACE-009",
+        "timestamp": "2026-07-22T14:06:10",
+        "level": "ERROR",
+        "message": "Reconnection completion diagnostic event was not recorded.",
+        "sourceSystem": "TraceRepository"
+      },
+      "file": "data/nodes/test_traces.csv"
+    },
+    {
+      "id": "TRACE-010",
+      "label": "TestTrace",
+      "properties": {
+        "id": "TRACE-010",
+        "timestamp": "2026-07-24T16:20:17",
+        "level": "ERROR",
+        "message": "Media audio profile restoration failed after the Bluetooth connection was established.",
+        "sourceSystem": "TraceRepository"
+      },
+      "file": "data/nodes/test_traces.csv"
+    },
+    {
+      "id": "TEST-001",
+      "label": "Test",
+      "properties": {
+        "id": "TEST-001",
+        "title": "Automatic reconnection after ignition",
+        "description": "Verify that a previously paired phone reconnects automatically after an ignition cycle.",
+        "preconditions": "Phone is paired; Bluetooth is enabled; ignition is off.",
+        "expectedResult": "The phone reconnects automatically without user interaction.",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/tests.csv"
+    },
+    {
+      "id": "TEST-002",
+      "label": "Test",
+      "properties": {
+        "id": "TEST-002",
+        "title": "Reconnection time verification",
+        "description": "Measure the time required to reconnect a previously paired phone after ignition.",
+        "preconditions": "Phone is paired and available; ignition is off.",
+        "expectedResult": "The phone reconnects within 10 seconds.",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/tests.csv"
+    },
+    {
+      "id": "TEST-003",
+      "label": "Test",
+      "properties": {
+        "id": "TEST-003",
+        "title": "Stored pairing reuse",
+        "description": "Verify that stored pairing data is reused after an ignition cycle.",
+        "preconditions": "Phone was paired before shutdown; pairing data is stored.",
+        "expectedResult": "The phone reconnects without requesting a new pairing confirmation.",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/tests.csv"
+    },
+    {
+      "id": "TEST-004",
+      "label": "Test",
+      "properties": {
+        "id": "TEST-004",
+        "title": "Transient failure retry",
+        "description": "Verify that the system retries after one simulated transient connection failure.",
+        "preconditions": "Phone is paired; the first connection attempt is configured to fail temporarily.",
+        "expectedResult": "The system performs one retry and reconnects successfully.",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/tests.csv"
+    },
+    {
+      "id": "TEST-005",
+      "label": "Test",
+      "properties": {
+        "id": "TEST-005",
+        "title": "Bluetooth profile restoration",
+        "description": "Verify restoration of phone audio and media audio profiles after reconnection.",
+        "preconditions": "Phone supports phone audio and media audio profiles.",
+        "expectedResult": "Both supported profiles become available after reconnection.",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/tests.csv"
+    },
+    {
+      "id": "TEST-006",
+      "label": "Test",
+      "properties": {
+        "id": "TEST-006",
+        "title": "Reconnection diagnostic logging",
+        "description": "Verify that diagnostic events are recorded during a reconnection attempt.",
+        "preconditions": "Diagnostic logging is enabled; phone is paired.",
+        "expectedResult": "Start, completion, result, and duration events are recorded.",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/tests.csv"
+    },
+    {
+      "id": "TEST-007",
+      "label": "Test",
+      "properties": {
+        "id": "TEST-007",
+        "title": "Repeated ignition cycle reconnection",
+        "description": "Verify reconnection behavior over five consecutive ignition cycles.",
+        "preconditions": "Phone is paired; five ignition cycles can be performed.",
+        "expectedResult": "The phone reconnects automatically within 10 seconds during every cycle.",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/tests.csv"
+    },
+    {
+      "id": "TEST-008",
+      "label": "Test",
+      "properties": {
+        "id": "TEST-008",
+        "title": "Weak-signal reconnection retry",
+        "description": "Verify reconnection and retry behavior when the phone signal is temporarily weak.",
+        "preconditions": "Phone is paired and placed near the edge of Bluetooth range.",
+        "expectedResult": "The system retries if needed and reconnects within 10 seconds.",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/tests.csv"
+    },
+    {
+      "id": "TEST-009",
+      "label": "Test",
+      "properties": {
+        "id": "TEST-009",
+        "title": "Delayed phone availability",
+        "description": "Verify reconnection when the phone becomes available several seconds after ignition.",
+        "preconditions": "Phone is paired; phone Bluetooth becomes available three seconds after ignition.",
+        "expectedResult": "The system detects the phone and reconnects automatically.",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/tests.csv"
+    },
+    {
+      "id": "TEST-010",
+      "label": "Test",
+      "properties": {
+        "id": "TEST-010",
+        "title": "Cold-start reconnection performance",
+        "description": "Measure reconnection time after a complete infotainment system shutdown.",
+        "preconditions": "Phone is paired; infotainment system is fully powered down.",
+        "expectedResult": "The phone reconnects within 10 seconds after Bluetooth becomes available.",
+        "sourceSystem": "TestManagementSystem"
+      },
+      "file": "data/nodes/tests.csv"
+    }
+  ],
+  "edges": [
+    {
+      "id": "AFFECTS:DEF-001:COMP-002",
+      "source": "DEF-001",
+      "target": "COMP-002",
+      "label": "AFFECTS",
+      "file": "data/relationships/defect_ticket_affects_component.csv"
+    },
+    {
+      "id": "AFFECTS:DEF-002:COMP-005",
+      "source": "DEF-002",
+      "target": "COMP-005",
+      "label": "AFFECTS",
+      "file": "data/relationships/defect_ticket_affects_component.csv"
+    },
+    {
+      "id": "AFFECTS:DEF-003:COMP-004",
+      "source": "DEF-003",
+      "target": "COMP-004",
+      "label": "AFFECTS",
+      "file": "data/relationships/defect_ticket_affects_component.csv"
+    },
+    {
+      "id": "HAS_REQUIREMENT:FEAT-001:REQ-001",
+      "source": "FEAT-001",
+      "target": "REQ-001",
+      "label": "HAS_REQUIREMENT",
+      "file": "data/relationships/feature_has_requirement.csv"
+    },
+    {
+      "id": "HAS_REQUIREMENT:FEAT-001:REQ-002",
+      "source": "FEAT-001",
+      "target": "REQ-002",
+      "label": "HAS_REQUIREMENT",
+      "file": "data/relationships/feature_has_requirement.csv"
+    },
+    {
+      "id": "HAS_REQUIREMENT:FEAT-001:REQ-003",
+      "source": "FEAT-001",
+      "target": "REQ-003",
+      "label": "HAS_REQUIREMENT",
+      "file": "data/relationships/feature_has_requirement.csv"
+    },
+    {
+      "id": "HAS_REQUIREMENT:FEAT-001:REQ-004",
+      "source": "FEAT-001",
+      "target": "REQ-004",
+      "label": "HAS_REQUIREMENT",
+      "file": "data/relationships/feature_has_requirement.csv"
+    },
+    {
+      "id": "HAS_REQUIREMENT:FEAT-001:REQ-005",
+      "source": "FEAT-001",
+      "target": "REQ-005",
+      "label": "HAS_REQUIREMENT",
+      "file": "data/relationships/feature_has_requirement.csv"
+    },
+    {
+      "id": "HAS_REQUIREMENT:FEAT-001:REQ-006",
+      "source": "FEAT-001",
+      "target": "REQ-006",
+      "label": "HAS_REQUIREMENT",
+      "file": "data/relationships/feature_has_requirement.csv"
+    },
+    {
+      "id": "HAS_REQUIREMENT:FEAT-001:REQ-007",
+      "source": "FEAT-001",
+      "target": "REQ-007",
+      "label": "HAS_REQUIREMENT",
+      "file": "data/relationships/feature_has_requirement.csv"
+    },
+    {
+      "id": "IMPLEMENTS:COMP-001:REQ-001",
+      "source": "COMP-001",
+      "target": "REQ-001",
+      "label": "IMPLEMENTS",
+      "file": "data/relationships/software_component_implements_requirement.csv"
+    },
+    {
+      "id": "IMPLEMENTS:COMP-002:REQ-001",
+      "source": "COMP-002",
+      "target": "REQ-001",
+      "label": "IMPLEMENTS",
+      "file": "data/relationships/software_component_implements_requirement.csv"
+    },
+    {
+      "id": "IMPLEMENTS:COMP-002:REQ-002",
+      "source": "COMP-002",
+      "target": "REQ-002",
+      "label": "IMPLEMENTS",
+      "file": "data/relationships/software_component_implements_requirement.csv"
+    },
+    {
+      "id": "IMPLEMENTS:COMP-003:REQ-003",
+      "source": "COMP-003",
+      "target": "REQ-003",
+      "label": "IMPLEMENTS",
+      "file": "data/relationships/software_component_implements_requirement.csv"
+    },
+    {
+      "id": "IMPLEMENTS:COMP-002:REQ-004",
+      "source": "COMP-002",
+      "target": "REQ-004",
+      "label": "IMPLEMENTS",
+      "file": "data/relationships/software_component_implements_requirement.csv"
+    },
+    {
+      "id": "IMPLEMENTS:COMP-004:REQ-005",
+      "source": "COMP-004",
+      "target": "REQ-005",
+      "label": "IMPLEMENTS",
+      "file": "data/relationships/software_component_implements_requirement.csv"
+    },
+    {
+      "id": "IMPLEMENTS:COMP-005:REQ-006",
+      "source": "COMP-005",
+      "target": "REQ-006",
+      "label": "IMPLEMENTS",
+      "file": "data/relationships/software_component_implements_requirement.csv"
+    },
+    {
+      "id": "IMPLEMENTS:COMP-002:REQ-007",
+      "source": "COMP-002",
+      "target": "REQ-007",
+      "label": "IMPLEMENTS",
+      "file": "data/relationships/software_component_implements_requirement.csv"
+    },
+    {
+      "id": "EXECUTION_OF:EXEC-001:TEST-001",
+      "source": "EXEC-001",
+      "target": "TEST-001",
+      "label": "EXECUTION_OF",
+      "file": "data/relationships/test_execution_execution_of_test.csv"
+    },
+    {
+      "id": "EXECUTION_OF:EXEC-002:TEST-002",
+      "source": "EXEC-002",
+      "target": "TEST-002",
+      "label": "EXECUTION_OF",
+      "file": "data/relationships/test_execution_execution_of_test.csv"
+    },
+    {
+      "id": "EXECUTION_OF:EXEC-003:TEST-002",
+      "source": "EXEC-003",
+      "target": "TEST-002",
+      "label": "EXECUTION_OF",
+      "file": "data/relationships/test_execution_execution_of_test.csv"
+    },
+    {
+      "id": "EXECUTION_OF:EXEC-004:TEST-003",
+      "source": "EXEC-004",
+      "target": "TEST-003",
+      "label": "EXECUTION_OF",
+      "file": "data/relationships/test_execution_execution_of_test.csv"
+    },
+    {
+      "id": "EXECUTION_OF:EXEC-005:TEST-004",
+      "source": "EXEC-005",
+      "target": "TEST-004",
+      "label": "EXECUTION_OF",
+      "file": "data/relationships/test_execution_execution_of_test.csv"
+    },
+    {
+      "id": "EXECUTION_OF:EXEC-006:TEST-002",
+      "source": "EXEC-006",
+      "target": "TEST-002",
+      "label": "EXECUTION_OF",
+      "file": "data/relationships/test_execution_execution_of_test.csv"
+    },
+    {
+      "id": "EXECUTION_OF:EXEC-007:TEST-007",
+      "source": "EXEC-007",
+      "target": "TEST-007",
+      "label": "EXECUTION_OF",
+      "file": "data/relationships/test_execution_execution_of_test.csv"
+    },
+    {
+      "id": "EXECUTION_OF:EXEC-008:TEST-008",
+      "source": "EXEC-008",
+      "target": "TEST-008",
+      "label": "EXECUTION_OF",
+      "file": "data/relationships/test_execution_execution_of_test.csv"
+    },
+    {
+      "id": "EXECUTION_OF:EXEC-009:TEST-005",
+      "source": "EXEC-009",
+      "target": "TEST-005",
+      "label": "EXECUTION_OF",
+      "file": "data/relationships/test_execution_execution_of_test.csv"
+    },
+    {
+      "id": "EXECUTION_OF:EXEC-010:TEST-002",
+      "source": "EXEC-010",
+      "target": "TEST-002",
+      "label": "EXECUTION_OF",
+      "file": "data/relationships/test_execution_execution_of_test.csv"
+    },
+    {
+      "id": "EXECUTION_OF:EXEC-011:TEST-001",
+      "source": "EXEC-011",
+      "target": "TEST-001",
+      "label": "EXECUTION_OF",
+      "file": "data/relationships/test_execution_execution_of_test.csv"
+    },
+    {
+      "id": "EXECUTION_OF:EXEC-012:TEST-006",
+      "source": "EXEC-012",
+      "target": "TEST-006",
+      "label": "EXECUTION_OF",
+      "file": "data/relationships/test_execution_execution_of_test.csv"
+    },
+    {
+      "id": "EXECUTION_OF:EXEC-013:TEST-009",
+      "source": "EXEC-013",
+      "target": "TEST-009",
+      "label": "EXECUTION_OF",
+      "file": "data/relationships/test_execution_execution_of_test.csv"
+    },
+    {
+      "id": "EXECUTION_OF:EXEC-014:TEST-005",
+      "source": "EXEC-014",
+      "target": "TEST-005",
+      "label": "EXECUTION_OF",
+      "file": "data/relationships/test_execution_execution_of_test.csv"
+    },
+    {
+      "id": "EXECUTION_OF:EXEC-015:TEST-010",
+      "source": "EXEC-015",
+      "target": "TEST-010",
+      "label": "EXECUTION_OF",
+      "file": "data/relationships/test_execution_execution_of_test.csv"
+    },
+    {
+      "id": "EXECUTION_OF:EXEC-016:TEST-007",
+      "source": "EXEC-016",
+      "target": "TEST-007",
+      "label": "EXECUTION_OF",
+      "file": "data/relationships/test_execution_execution_of_test.csv"
+    },
+    {
+      "id": "HAS_DEFECT_TICKET:EXEC-003:DEF-001",
+      "source": "EXEC-003",
+      "target": "DEF-001",
+      "label": "HAS_DEFECT_TICKET",
+      "file": "data/relationships/test_execution_has_defect_ticket.csv"
+    },
+    {
+      "id": "HAS_DEFECT_TICKET:EXEC-006:DEF-001",
+      "source": "EXEC-006",
+      "target": "DEF-001",
+      "label": "HAS_DEFECT_TICKET",
+      "file": "data/relationships/test_execution_has_defect_ticket.csv"
+    },
+    {
+      "id": "HAS_DEFECT_TICKET:EXEC-008:DEF-001",
+      "source": "EXEC-008",
+      "target": "DEF-001",
+      "label": "HAS_DEFECT_TICKET",
+      "file": "data/relationships/test_execution_has_defect_ticket.csv"
+    },
+    {
+      "id": "HAS_DEFECT_TICKET:EXEC-010:DEF-001",
+      "source": "EXEC-010",
+      "target": "DEF-001",
+      "label": "HAS_DEFECT_TICKET",
+      "file": "data/relationships/test_execution_has_defect_ticket.csv"
+    },
+    {
+      "id": "HAS_DEFECT_TICKET:EXEC-012:DEF-002",
+      "source": "EXEC-012",
+      "target": "DEF-002",
+      "label": "HAS_DEFECT_TICKET",
+      "file": "data/relationships/test_execution_has_defect_ticket.csv"
+    },
+    {
+      "id": "HAS_DEFECT_TICKET:EXEC-014:DEF-003",
+      "source": "EXEC-014",
+      "target": "DEF-003",
+      "label": "HAS_DEFECT_TICKET",
+      "file": "data/relationships/test_execution_has_defect_ticket.csv"
+    },
+    {
+      "id": "HAS_DEFECT_TICKET:EXEC-016:DEF-001",
+      "source": "EXEC-016",
+      "target": "DEF-001",
+      "label": "HAS_DEFECT_TICKET",
+      "file": "data/relationships/test_execution_has_defect_ticket.csv"
+    },
+    {
+      "id": "PRODUCES:EXEC-003:TRACE-001",
+      "source": "EXEC-003",
+      "target": "TRACE-001",
+      "label": "PRODUCES",
+      "file": "data/relationships/test_execution_produces_trace.csv"
+    },
+    {
+      "id": "PRODUCES:EXEC-003:TRACE-002",
+      "source": "EXEC-003",
+      "target": "TRACE-002",
+      "label": "PRODUCES",
+      "file": "data/relationships/test_execution_produces_trace.csv"
+    },
+    {
+      "id": "PRODUCES:EXEC-006:TRACE-003",
+      "source": "EXEC-006",
+      "target": "TRACE-003",
+      "label": "PRODUCES",
+      "file": "data/relationships/test_execution_produces_trace.csv"
+    },
+    {
+      "id": "PRODUCES:EXEC-006:TRACE-004",
+      "source": "EXEC-006",
+      "target": "TRACE-004",
+      "label": "PRODUCES",
+      "file": "data/relationships/test_execution_produces_trace.csv"
+    },
+    {
+      "id": "PRODUCES:EXEC-006:TRACE-005",
+      "source": "EXEC-006",
+      "target": "TRACE-005",
+      "label": "PRODUCES",
+      "file": "data/relationships/test_execution_produces_trace.csv"
+    },
+    {
+      "id": "PRODUCES:EXEC-010:TRACE-006",
+      "source": "EXEC-010",
+      "target": "TRACE-006",
+      "label": "PRODUCES",
+      "file": "data/relationships/test_execution_produces_trace.csv"
+    },
+    {
+      "id": "PRODUCES:EXEC-010:TRACE-007",
+      "source": "EXEC-010",
+      "target": "TRACE-007",
+      "label": "PRODUCES",
+      "file": "data/relationships/test_execution_produces_trace.csv"
+    },
+    {
+      "id": "PRODUCES:EXEC-010:TRACE-008",
+      "source": "EXEC-010",
+      "target": "TRACE-008",
+      "label": "PRODUCES",
+      "file": "data/relationships/test_execution_produces_trace.csv"
+    },
+    {
+      "id": "PRODUCES:EXEC-012:TRACE-009",
+      "source": "EXEC-012",
+      "target": "TRACE-009",
+      "label": "PRODUCES",
+      "file": "data/relationships/test_execution_produces_trace.csv"
+    },
+    {
+      "id": "PRODUCES:EXEC-014:TRACE-010",
+      "source": "EXEC-014",
+      "target": "TRACE-010",
+      "label": "PRODUCES",
+      "file": "data/relationships/test_execution_produces_trace.csv"
+    },
+    {
+      "id": "VERIFIES:TEST-001:REQ-001",
+      "source": "TEST-001",
+      "target": "REQ-001",
+      "label": "VERIFIES",
+      "file": "data/relationships/test_verifies_requirement.csv"
+    },
+    {
+      "id": "VERIFIES:TEST-002:REQ-002",
+      "source": "TEST-002",
+      "target": "REQ-002",
+      "label": "VERIFIES",
+      "file": "data/relationships/test_verifies_requirement.csv"
+    },
+    {
+      "id": "VERIFIES:TEST-003:REQ-003",
+      "source": "TEST-003",
+      "target": "REQ-003",
+      "label": "VERIFIES",
+      "file": "data/relationships/test_verifies_requirement.csv"
+    },
+    {
+      "id": "VERIFIES:TEST-004:REQ-004",
+      "source": "TEST-004",
+      "target": "REQ-004",
+      "label": "VERIFIES",
+      "file": "data/relationships/test_verifies_requirement.csv"
+    },
+    {
+      "id": "VERIFIES:TEST-005:REQ-005",
+      "source": "TEST-005",
+      "target": "REQ-005",
+      "label": "VERIFIES",
+      "file": "data/relationships/test_verifies_requirement.csv"
+    },
+    {
+      "id": "VERIFIES:TEST-006:REQ-006",
+      "source": "TEST-006",
+      "target": "REQ-006",
+      "label": "VERIFIES",
+      "file": "data/relationships/test_verifies_requirement.csv"
+    },
+    {
+      "id": "VERIFIES:TEST-007:REQ-001",
+      "source": "TEST-007",
+      "target": "REQ-001",
+      "label": "VERIFIES",
+      "file": "data/relationships/test_verifies_requirement.csv"
+    },
+    {
+      "id": "VERIFIES:TEST-007:REQ-002",
+      "source": "TEST-007",
+      "target": "REQ-002",
+      "label": "VERIFIES",
+      "file": "data/relationships/test_verifies_requirement.csv"
+    },
+    {
+      "id": "VERIFIES:TEST-008:REQ-002",
+      "source": "TEST-008",
+      "target": "REQ-002",
+      "label": "VERIFIES",
+      "file": "data/relationships/test_verifies_requirement.csv"
+    },
+    {
+      "id": "VERIFIES:TEST-008:REQ-004",
+      "source": "TEST-008",
+      "target": "REQ-004",
+      "label": "VERIFIES",
+      "file": "data/relationships/test_verifies_requirement.csv"
+    },
+    {
+      "id": "VERIFIES:TEST-009:REQ-001",
+      "source": "TEST-009",
+      "target": "REQ-001",
+      "label": "VERIFIES",
+      "file": "data/relationships/test_verifies_requirement.csv"
+    },
+    {
+      "id": "VERIFIES:TEST-009:REQ-004",
+      "source": "TEST-009",
+      "target": "REQ-004",
+      "label": "VERIFIES",
+      "file": "data/relationships/test_verifies_requirement.csv"
+    },
+    {
+      "id": "VERIFIES:TEST-010:REQ-002",
+      "source": "TEST-010",
+      "target": "REQ-002",
+      "label": "VERIFIES",
+      "file": "data/relationships/test_verifies_requirement.csv"
+    }
+  ],
+  "investigationIds": [
+    "COMP-002",
+    "DEF-001",
+    "EXEC-010",
+    "REQ-002",
+    "TEST-002",
+    "TRACE-006",
+    "TRACE-007",
+    "TRACE-008"
+  ],
+  "sources": [
+    {
+      "name": "DefectTrackingSystem",
+      "labels": [
+        "DefectTicket"
+      ],
+      "count": 3
+    },
+    {
+      "name": "ProductDefinitionSystem",
+      "labels": [
+        "Feature"
+      ],
+      "count": 1
+    },
+    {
+      "name": "RequirementsSystem",
+      "labels": [
+        "Requirement"
+      ],
+      "count": 7
+    },
+    {
+      "name": "SoftwareArchitectureSystem",
+      "labels": [
+        "SoftwareComponent"
+      ],
+      "count": 5
+    },
+    {
+      "name": "TestManagementSystem",
+      "labels": [
+        "TestExecution",
+        "Test"
+      ],
+      "count": 26
+    },
+    {
+      "name": "TraceRepository",
+      "labels": [
+        "TestTrace"
+      ],
+      "count": 10
+    }
+  ],
+  "retrieval": {
+    "model": "auto",
+    "summary": {
+      "flat": {
+        "total_cases": 10,
+        "execution_success": 10,
+        "evidence_complete": 7,
+        "mean_recall": 0.8466666666666667,
+        "mean_precision": 0.4916666666666667
+      },
+      "graph": {
+        "total_cases": 10,
+        "execution_success": 10,
+        "evidence_complete": 9,
+        "mean_recall": 0.9800000000000001,
+        "mean_precision": 1
+      },
+      "by_category": {
+        "aggregation": {
+          "flat": {
+            "total_cases": 1,
+            "execution_success": 1,
+            "evidence_complete": 1,
+            "mean_recall": 1,
+            "mean_precision": 1
+          },
+          "graph": {
+            "total_cases": 1,
+            "execution_success": 1,
+            "evidence_complete": 1,
+            "mean_recall": 1,
+            "mean_precision": 1
+          }
+        },
+        "cross_environment": {
+          "flat": {
+            "total_cases": 1,
+            "execution_success": 1,
+            "evidence_complete": 1,
+            "mean_recall": 1,
+            "mean_precision": 0.6666666666666666
+          },
+          "graph": {
+            "total_cases": 1,
+            "execution_success": 1,
+            "evidence_complete": 1,
+            "mean_recall": 1,
+            "mean_precision": 1
+          }
+        },
+        "cross_source": {
+          "flat": {
+            "total_cases": 1,
+            "execution_success": 1,
+            "evidence_complete": 0,
+            "mean_recall": 0.6666666666666666,
+            "mean_precision": 1
+          },
+          "graph": {
+            "total_cases": 1,
+            "execution_success": 1,
+            "evidence_complete": 1,
+            "mean_recall": 1,
+            "mean_precision": 1
+          }
+        },
+        "direct_relationship": {
+          "flat": {
+            "total_cases": 2,
+            "execution_success": 2,
+            "evidence_complete": 2,
+            "mean_recall": 1,
+            "mean_precision": 0.18333333333333335
+          },
+          "graph": {
+            "total_cases": 2,
+            "execution_success": 2,
+            "evidence_complete": 2,
+            "mean_recall": 1,
+            "mean_precision": 1
+          }
+        },
+        "filtering": {
+          "flat": {
+            "total_cases": 1,
+            "execution_success": 1,
+            "evidence_complete": 0,
+            "mean_recall": 0,
+            "mean_precision": 0
+          },
+          "graph": {
+            "total_cases": 1,
+            "execution_success": 1,
+            "evidence_complete": 1,
+            "mean_recall": 1,
+            "mean_precision": 1
+          }
+        },
+        "multi_hop": {
+          "flat": {
+            "total_cases": 2,
+            "execution_success": 2,
+            "evidence_complete": 1,
+            "mean_recall": 0.9,
+            "mean_precision": 0.5666666666666667
+          },
+          "graph": {
+            "total_cases": 2,
+            "execution_success": 2,
+            "evidence_complete": 1,
+            "mean_recall": 0.9,
+            "mean_precision": 1
+          }
+        },
+        "one_to_many": {
+          "flat": {
+            "total_cases": 2,
+            "execution_success": 2,
+            "evidence_complete": 2,
+            "mean_recall": 1,
+            "mean_precision": 0.375
+          },
+          "graph": {
+            "total_cases": 2,
+            "execution_success": 2,
+            "evidence_complete": 2,
+            "mean_recall": 1,
+            "mean_precision": 1
+          }
+        }
+      }
+    },
+    "cases": [
+      {
+        "id": "RET-001",
+        "category": "direct_relationship",
+        "question": "What requirement does TEST-006 verify?",
+        "flat": {
+          "metrics": {
+            "recall": 1,
+            "precision": 0.16666666666666666,
+            "evidence_complete": true,
+            "expected_atoms": [
+              "id:REQ-006"
+            ],
+            "matched_atoms": [
+              "id:REQ-006"
+            ],
+            "missing_atoms": [],
+            "unexpected_atoms": [
+              "id:REQ-001",
+              "id:REQ-002",
+              "id:REQ-003",
+              "id:REQ-004",
+              "id:REQ-005"
+            ]
+          },
+          "count": 10
+        },
+        "graph": {
+          "metrics": {
+            "recall": 1,
+            "precision": 1,
+            "evidence_complete": true,
+            "expected_atoms": [
+              "id:REQ-006"
+            ],
+            "matched_atoms": [
+              "id:REQ-006"
+            ],
+            "missing_atoms": [],
+            "unexpected_atoms": []
+          },
+          "count": 1,
+          "cypher": "MATCH (t:Test {id: \"TEST-006\"})-[:VERIFIES]->(r:Requirement)\nRETURN r.id, r.title, r.description, r.priority, r.status, r.sourceSystem",
+          "attempts": 1,
+          "retryReason": null
+        }
+      },
+      {
+        "id": "RET-002",
+        "category": "direct_relationship",
+        "question": "Which software component is affected by DEF-003?",
+        "flat": {
+          "metrics": {
+            "recall": 1,
+            "precision": 0.2,
+            "evidence_complete": true,
+            "expected_atoms": [
+              "id:COMP-004"
+            ],
+            "matched_atoms": [
+              "id:COMP-004"
+            ],
+            "missing_atoms": [],
+            "unexpected_atoms": [
+              "id:COMP-001",
+              "id:COMP-002",
+              "id:COMP-003",
+              "id:COMP-005"
+            ]
+          },
+          "count": 10
+        },
+        "graph": {
+          "metrics": {
+            "recall": 1,
+            "precision": 1,
+            "evidence_complete": true,
+            "expected_atoms": [
+              "id:COMP-004"
+            ],
+            "matched_atoms": [
+              "id:COMP-004"
+            ],
+            "missing_atoms": [],
+            "unexpected_atoms": []
+          },
+          "count": 1,
+          "cypher": "MATCH (d:DefectTicket)-[:AFFECTS]->(c:SoftwareComponent)\nWHERE d.id = \"DEF-003\"\nRETURN c.id, c.name, c.description, c.version, c.sourceSystem",
+          "attempts": 1,
+          "retryReason": null
+        }
+      },
+      {
+        "id": "RET-003",
+        "category": "one_to_many",
+        "question": "Which traces were produced by EXEC-006?",
+        "flat": {
+          "metrics": {
+            "recall": 1,
+            "precision": 0.375,
+            "evidence_complete": true,
+            "expected_atoms": [
+              "id:TRACE-003",
+              "id:TRACE-004",
+              "id:TRACE-005"
+            ],
+            "matched_atoms": [
+              "id:TRACE-003",
+              "id:TRACE-004",
+              "id:TRACE-005"
+            ],
+            "missing_atoms": [],
+            "unexpected_atoms": [
+              "id:TRACE-001",
+              "id:TRACE-002",
+              "id:TRACE-006",
+              "id:TRACE-007",
+              "id:TRACE-008"
+            ]
+          },
+          "count": 10
+        },
+        "graph": {
+          "metrics": {
+            "recall": 1,
+            "precision": 1,
+            "evidence_complete": true,
+            "expected_atoms": [
+              "id:TRACE-003",
+              "id:TRACE-004",
+              "id:TRACE-005"
+            ],
+            "matched_atoms": [
+              "id:TRACE-003",
+              "id:TRACE-004",
+              "id:TRACE-005"
+            ],
+            "missing_atoms": [],
+            "unexpected_atoms": []
+          },
+          "count": 3,
+          "cypher": "MATCH (e:TestExecution {id: \"EXEC-006\"})-[:PRODUCES]->(t:TestTrace)\nRETURN t.id, t.timestamp, t.level, t.message, t.sourceSystem",
+          "attempts": 1,
+          "retryReason": null
+        }
+      },
+      {
+        "id": "RET-004",
+        "category": "one_to_many",
+        "question": "Which tests verify REQ-004?",
+        "flat": {
+          "metrics": {
+            "recall": 1,
+            "precision": 0.375,
+            "evidence_complete": true,
+            "expected_atoms": [
+              "id:TEST-004",
+              "id:TEST-008",
+              "id:TEST-009"
+            ],
+            "matched_atoms": [
+              "id:TEST-004",
+              "id:TEST-008",
+              "id:TEST-009"
+            ],
+            "missing_atoms": [],
+            "unexpected_atoms": [
+              "id:TEST-001",
+              "id:TEST-002",
+              "id:TEST-003",
+              "id:TEST-005",
+              "id:TEST-006"
+            ]
+          },
+          "count": 10
+        },
+        "graph": {
+          "metrics": {
+            "recall": 1,
+            "precision": 1,
+            "evidence_complete": true,
+            "expected_atoms": [
+              "id:TEST-004",
+              "id:TEST-008",
+              "id:TEST-009"
+            ],
+            "matched_atoms": [
+              "id:TEST-004",
+              "id:TEST-008",
+              "id:TEST-009"
+            ],
+            "missing_atoms": [],
+            "unexpected_atoms": []
+          },
+          "count": 3,
+          "cypher": "MATCH (test:Test)-[:VERIFIES]->(requirement:Requirement)\nWHERE requirement.id = \"REQ-004\"\nRETURN test.id, test.title, test.description",
+          "attempts": 1,
+          "retryReason": null
+        }
+      },
+      {
+        "id": "RET-005",
+        "category": "multi_hop",
+        "question": "What happened during EXEC-010?",
+        "flat": {
+          "metrics": {
+            "recall": 0.8,
+            "precision": 0.8,
+            "evidence_complete": false,
+            "expected_atoms": [
+              "id:COMP-002",
+              "id:DEF-001",
+              "id:EXEC-010",
+              "id:REQ-002",
+              "id:TEST-002",
+              "id:TRACE-006",
+              "id:TRACE-007",
+              "id:TRACE-008",
+              "number:18",
+              "result:FAIL"
+            ],
+            "matched_atoms": [
+              "id:DEF-001",
+              "id:EXEC-010",
+              "id:TEST-002",
+              "id:TRACE-006",
+              "id:TRACE-007",
+              "id:TRACE-008",
+              "number:18",
+              "result:FAIL"
+            ],
+            "missing_atoms": [
+              "id:COMP-002",
+              "id:REQ-002"
+            ],
+            "unexpected_atoms": [
+              "id:TEST-006",
+              "id:TEST-007"
+            ]
+          },
+          "count": 8
+        },
+        "graph": {
+          "metrics": {
+            "recall": 0.8,
+            "precision": 1,
+            "evidence_complete": false,
+            "expected_atoms": [
+              "id:COMP-002",
+              "id:DEF-001",
+              "id:EXEC-010",
+              "id:REQ-002",
+              "id:TEST-002",
+              "id:TRACE-006",
+              "id:TRACE-007",
+              "id:TRACE-008",
+              "number:18",
+              "result:FAIL"
+            ],
+            "matched_atoms": [
+              "id:DEF-001",
+              "id:EXEC-010",
+              "id:TEST-002",
+              "id:TRACE-006",
+              "id:TRACE-007",
+              "id:TRACE-008",
+              "number:18",
+              "result:FAIL"
+            ],
+            "missing_atoms": [
+              "id:COMP-002",
+              "id:REQ-002"
+            ],
+            "unexpected_atoms": []
+          },
+          "count": 3,
+          "cypher": "MATCH (te:TestExecution {id: \"EXEC-010\"})\nOPTIONAL MATCH (te)-[:EXECUTION_OF]->(test:Test)\nOPTIONAL MATCH (te)-[:PRODUCES]->(trace:TestTrace)\nOPTIONAL MATCH (te)-[:HAS_DEFECT_TICKET]->(defect:DefectTicket)\nRETURN \n  te.id as executionId,\n  te.executionDate,\n  te.environment,\n  te.result,\n  te.reconnectionTimeSeconds,\n  te.softwareVersion,\n  test.id as testId,\n  test.title as testTitle,\n  trace.id as traceId,\n  trace.timestamp,\n  trace.level,\n  trace.message,\n  defect.id as defectId,\n  defect.title as defectTitle,\n  defect.severity as defectSeverity",
+          "attempts": 1,
+          "retryReason": null
+        }
+      },
+      {
+        "id": "RET-006",
+        "category": "multi_hop",
+        "question": "Which defect ticket is linked to EXEC-012 and which software component does that defect affect?",
+        "flat": {
+          "metrics": {
+            "recall": 1,
+            "precision": 0.3333333333333333,
+            "evidence_complete": true,
+            "expected_atoms": [
+              "id:COMP-005",
+              "id:DEF-002"
+            ],
+            "matched_atoms": [
+              "id:COMP-005",
+              "id:DEF-002"
+            ],
+            "missing_atoms": [],
+            "unexpected_atoms": [
+              "id:COMP-002",
+              "id:COMP-004",
+              "id:DEF-001",
+              "id:DEF-003"
+            ]
+          },
+          "count": 10
+        },
+        "graph": {
+          "metrics": {
+            "recall": 1,
+            "precision": 1,
+            "evidence_complete": true,
+            "expected_atoms": [
+              "id:COMP-005",
+              "id:DEF-002"
+            ],
+            "matched_atoms": [
+              "id:COMP-005",
+              "id:DEF-002"
+            ],
+            "missing_atoms": [],
+            "unexpected_atoms": []
+          },
+          "count": 1,
+          "cypher": "MATCH (exec:TestExecution {id: \"EXEC-012\"})-[:HAS_DEFECT_TICKET]->(defect:DefectTicket)-[:AFFECTS]->(component:SoftwareComponent)\nRETURN defect.id, defect.title, defect.description, defect.status, defect.severity, component.id, component.name, component.description",
+          "attempts": 1,
+          "retryReason": null
+        }
+      },
+      {
+        "id": "RET-007",
+        "category": "cross_source",
+        "question": "Which source systems contribute facts to the investigation of EXEC-010?",
+        "flat": {
+          "metrics": {
+            "recall": 0.6666666666666666,
+            "precision": 1,
+            "evidence_complete": false,
+            "expected_atoms": [
+              "source_system:DefectTrackingSystem",
+              "source_system:ProductDefinitionSystem",
+              "source_system:RequirementsSystem",
+              "source_system:SoftwareArchitectureSystem",
+              "source_system:TestManagementSystem",
+              "source_system:TraceRepository"
+            ],
+            "matched_atoms": [
+              "source_system:ProductDefinitionSystem",
+              "source_system:RequirementsSystem",
+              "source_system:SoftwareArchitectureSystem",
+              "source_system:TestManagementSystem"
+            ],
+            "missing_atoms": [
+              "source_system:DefectTrackingSystem",
+              "source_system:TraceRepository"
+            ],
+            "unexpected_atoms": []
+          },
+          "count": 20
+        },
+        "graph": {
+          "metrics": {
+            "recall": 1,
+            "precision": 1,
+            "evidence_complete": true,
+            "expected_atoms": [
+              "source_system:DefectTrackingSystem",
+              "source_system:ProductDefinitionSystem",
+              "source_system:RequirementsSystem",
+              "source_system:SoftwareArchitectureSystem",
+              "source_system:TestManagementSystem",
+              "source_system:TraceRepository"
+            ],
+            "matched_atoms": [
+              "source_system:DefectTrackingSystem",
+              "source_system:ProductDefinitionSystem",
+              "source_system:RequirementsSystem",
+              "source_system:SoftwareArchitectureSystem",
+              "source_system:TestManagementSystem",
+              "source_system:TraceRepository"
+            ],
+            "missing_atoms": [],
+            "unexpected_atoms": []
+          },
+          "count": 6,
+          "cypher": "MATCH (te:TestExecution {id: \"EXEC-010\"})\nOPTIONAL MATCH (te)-[:EXECUTION_OF]->(t:Test)\nOPTIONAL MATCH (te)-[:PRODUCES]->(tt:TestTrace)\nOPTIONAL MATCH (te)-[:HAS_DEFECT_TICKET]->(dt:DefectTicket)\nOPTIONAL MATCH (dt)-[:AFFECTS]->(sc:SoftwareComponent)\nOPTIONAL MATCH (t)-[:VERIFIES]->(req:Requirement)\nOPTIONAL MATCH (f:Feature)-[:HAS_REQUIREMENT]->(req)\nWITH [te, t, tt, dt, sc, req, f] AS nodes\nUNWIND nodes AS node\nWITH node.sourceSystem AS sourceSystem\nWHERE sourceSystem IS NOT NULL\nRETURN DISTINCT sourceSystem\nORDER BY sourceSystem",
+          "attempts": 2,
+          "retryReason": "neo4j_error"
+        }
+      },
+      {
+        "id": "RET-008",
+        "category": "cross_environment",
+        "question": "Which defect ticket is linked to failed executions in more than one test environment, and which environments are involved?",
+        "flat": {
+          "metrics": {
+            "recall": 1,
+            "precision": 0.6666666666666666,
+            "evidence_complete": true,
+            "expected_atoms": [
+              "environment:HiL",
+              "environment:SiL",
+              "environment:Vehicle",
+              "id:DEF-001"
+            ],
+            "matched_atoms": [
+              "environment:HiL",
+              "environment:SiL",
+              "environment:Vehicle",
+              "id:DEF-001"
+            ],
+            "missing_atoms": [],
+            "unexpected_atoms": [
+              "id:DEF-002",
+              "id:DEF-003"
+            ]
+          },
+          "count": 20
+        },
+        "graph": {
+          "metrics": {
+            "recall": 1,
+            "precision": 1,
+            "evidence_complete": true,
+            "expected_atoms": [
+              "environment:HiL",
+              "environment:SiL",
+              "environment:Vehicle",
+              "id:DEF-001"
+            ],
+            "matched_atoms": [
+              "environment:HiL",
+              "environment:SiL",
+              "environment:Vehicle",
+              "id:DEF-001"
+            ],
+            "missing_atoms": [],
+            "unexpected_atoms": []
+          },
+          "count": 1,
+          "cypher": "MATCH (te:TestExecution)-[:HAS_DEFECT_TICKET]->(dt:DefectTicket)\nWHERE te.result = 'FAIL'\nWITH dt, COLLECT(DISTINCT te.environment) AS environments\nWHERE SIZE(environments) > 1\nRETURN dt.id, dt.title, environments",
+          "attempts": 1,
+          "retryReason": null
+        }
+      },
+      {
+        "id": "RET-009",
+        "category": "filtering",
+        "question": "Which test executions verifying REQ-002 exceeded the 10-second reconnection requirement?",
+        "flat": {
+          "metrics": {
+            "recall": 0,
+            "precision": 0,
+            "evidence_complete": false,
+            "expected_atoms": [
+              "id:EXEC-003",
+              "id:EXEC-006",
+              "id:EXEC-008",
+              "id:EXEC-010",
+              "id:EXEC-016"
+            ],
+            "matched_atoms": [],
+            "missing_atoms": [
+              "id:EXEC-003",
+              "id:EXEC-006",
+              "id:EXEC-008",
+              "id:EXEC-010",
+              "id:EXEC-016"
+            ],
+            "unexpected_atoms": []
+          },
+          "count": 20
+        },
+        "graph": {
+          "metrics": {
+            "recall": 1,
+            "precision": 1,
+            "evidence_complete": true,
+            "expected_atoms": [
+              "id:EXEC-003",
+              "id:EXEC-006",
+              "id:EXEC-008",
+              "id:EXEC-010",
+              "id:EXEC-016"
+            ],
+            "matched_atoms": [
+              "id:EXEC-003",
+              "id:EXEC-006",
+              "id:EXEC-008",
+              "id:EXEC-010",
+              "id:EXEC-016"
+            ],
+            "missing_atoms": [],
+            "unexpected_atoms": []
+          },
+          "count": 5,
+          "cypher": "MATCH (req:Requirement {id: \"REQ-002\"})<-[:VERIFIES]-(test:Test)<-[:EXECUTION_OF]-(exec:TestExecution)\nWHERE exec.reconnectionTimeSeconds > 10\nRETURN exec.id, exec.executionDate, exec.environment, exec.result, exec.reconnectionTimeSeconds, exec.softwareVersion, test.id, test.title, req.id, req.title",
+          "attempts": 1,
+          "retryReason": null
+        }
+      },
+      {
+        "id": "RET-010",
+        "category": "aggregation",
+        "question": "How many test executions passed and failed in each environment?",
+        "flat": {
+          "metrics": {
+            "recall": 1,
+            "precision": 1,
+            "evidence_complete": true,
+            "expected_atoms": [
+              "count:HiL:FAIL:2",
+              "count:HiL:PASS:2",
+              "count:SiL:FAIL:1",
+              "count:SiL:PASS:4",
+              "count:Vehicle:FAIL:4",
+              "count:Vehicle:PASS:3"
+            ],
+            "matched_atoms": [
+              "count:HiL:FAIL:2",
+              "count:HiL:PASS:2",
+              "count:SiL:FAIL:1",
+              "count:SiL:PASS:4",
+              "count:Vehicle:FAIL:4",
+              "count:Vehicle:PASS:3"
+            ],
+            "missing_atoms": [],
+            "unexpected_atoms": []
+          },
+          "count": 20
+        },
+        "graph": {
+          "metrics": {
+            "recall": 1,
+            "precision": 1,
+            "evidence_complete": true,
+            "expected_atoms": [
+              "count:HiL:FAIL:2",
+              "count:HiL:PASS:2",
+              "count:SiL:FAIL:1",
+              "count:SiL:PASS:4",
+              "count:Vehicle:FAIL:4",
+              "count:Vehicle:PASS:3"
+            ],
+            "matched_atoms": [
+              "count:HiL:FAIL:2",
+              "count:HiL:PASS:2",
+              "count:SiL:FAIL:1",
+              "count:SiL:PASS:4",
+              "count:Vehicle:FAIL:4",
+              "count:Vehicle:PASS:3"
+            ],
+            "missing_atoms": [],
+            "unexpected_atoms": []
+          },
+          "count": 6,
+          "cypher": "MATCH (te:TestExecution)\nRETURN te.environment, te.result, COUNT(*) as executionCount\nORDER BY te.environment, te.result",
+          "attempts": 1,
+          "retryReason": null
+        }
+      }
+    ]
+  },
+  "agent": {
+    "summary": {
+      "cases": 8,
+      "executed": 8,
+      "fullyCorrect": 8,
+      "toolSelectionCorrect": 8,
+      "toolCallCountCorrect": 8,
+      "toolExecutionSuccess": 8,
+      "answerValuesComplete": 8,
+      "noResultHandlingCorrect": 8
+    },
+    "cases": [
+      {
+        "id": "AGT-001",
+        "question": "What requirement does TEST-006 verify?",
+        "response": {
+          "question": "What requirement does TEST-006 verify?",
+          "answer": "TEST-006 verifies **REQ-006: Record reconnection diagnostics**. \n\nThis requirement specifies that the system shall record diagnostic events for the start, completion, failure, and duration of each reconnection attempt. It has Medium priority and is Approved.",
+          "graph_tool_used": true,
+          "graph_tool_calls": 1,
+          "graph_tool_successes": 1,
+          "retrieved_record_count": 1,
+          "cypher_generation_attempts": 1,
+          "retry_reason": null,
+          "tool_error": null
+        },
+        "evaluation": {
+          "tool_selection_correct": true,
+          "tool_call_count_correct": true,
+          "tool_execution_success": true,
+          "answer_values_complete": true,
+          "no_result_handling_correct": true,
+          "fully_correct": true,
+          "missing_answer_values": []
+        }
+      },
+      {
+        "id": "AGT-002",
+        "question": "Which defect ticket is linked to EXEC-012 and which software component does that defect affect?",
+        "response": {
+          "question": "Which defect ticket is linked to EXEC-012 and which software component does that defect affect?",
+          "answer": "The defect ticket linked to EXEC-012 is **DEF-002** (\"Missing reconnection completion diagnostic event\"). It affects the **Connectivity Diagnostics Service** (COMP-005), which records diagnostic events and timing information for Bluetooth connection attempts. The defect is currently in progress with medium severity.",
+          "graph_tool_used": true,
+          "graph_tool_calls": 1,
+          "graph_tool_successes": 1,
+          "retrieved_record_count": 1,
+          "cypher_generation_attempts": 1,
+          "retry_reason": null,
+          "tool_error": null
+        },
+        "evaluation": {
+          "tool_selection_correct": true,
+          "tool_call_count_correct": true,
+          "tool_execution_success": true,
+          "answer_values_complete": true,
+          "no_result_handling_correct": true,
+          "fully_correct": true,
+          "missing_answer_values": []
+        }
+      },
+      {
+        "id": "AGT-003",
+        "question": "Which test executions verifying REQ-002 exceeded the 10-second reconnection requirement?",
+        "response": {
+          "question": "Which test executions verifying REQ-002 exceeded the 10-second reconnection requirement?",
+          "answer": "Five test executions verifying REQ-002 exceeded the 10-second reconnection requirement:\n\n1. **EXEC-003** (2026-07-15, SiL): 12.1s – FAIL\n2. **EXEC-006** (2026-07-17, HiL): 15.4s – FAIL\n3. **EXEC-008** (2026-07-18, HiL): 13.8s – FAIL\n4. **EXEC-010** (2026-07-21, Vehicle): 18.0s – FAIL\n5. **EXEC-016** (2026-07-26, Vehicle): 11.6s – FAIL\n\nAll were executed with software version 2.3.0 and resulted in FAIL status.",
+          "graph_tool_used": true,
+          "graph_tool_calls": 1,
+          "graph_tool_successes": 1,
+          "retrieved_record_count": 5,
+          "cypher_generation_attempts": 1,
+          "retry_reason": null,
+          "tool_error": null
+        },
+        "evaluation": {
+          "tool_selection_correct": true,
+          "tool_call_count_correct": true,
+          "tool_execution_success": true,
+          "answer_values_complete": true,
+          "no_result_handling_correct": true,
+          "fully_correct": true,
+          "missing_answer_values": []
+        }
+      },
+      {
+        "id": "AGT-004",
+        "question": "Which defect ticket is linked to failed executions in more than one test environment, and which environments are involved?",
+        "response": {
+          "question": "Which defect ticket is linked to failed executions in more than one test environment, and which environments are involved?",
+          "answer": "**Defect Ticket:** **DEF-001** – \"Delayed Bluetooth reconnection after ignition\"\n\n**Environments Involved:** HiL, Vehicle, and SiL (3 environments)\n\n**Details:**\n- **Status:** Open\n- **Severity:** Critical\n- **Description:** Bluetooth reconnection sometimes exceeds the 10-second requirement because the connection request remains queued longer than expected.\n\nThis defect is linked to failed test executions across all three test environments, making it a critical issue affecting multiple testing stages.",
+          "graph_tool_used": true,
+          "graph_tool_calls": 1,
+          "graph_tool_successes": 1,
+          "retrieved_record_count": 1,
+          "cypher_generation_attempts": 1,
+          "retry_reason": null,
+          "tool_error": null
+        },
+        "evaluation": {
+          "tool_selection_correct": true,
+          "tool_call_count_correct": true,
+          "tool_execution_success": true,
+          "answer_values_complete": true,
+          "no_result_handling_correct": true,
+          "fully_correct": true,
+          "missing_answer_values": []
+        }
+      },
+      {
+        "id": "AGT-005",
+        "question": "What information is available for requirement REQ-999?",
+        "response": {
+          "question": "What information is available for requirement REQ-999?",
+          "answer": "No matching graph facts were retrieved for requirement REQ-999. This requirement either doesn't exist in the Knowledge Graph or isn't connected to features, components, or tests through the relationships queried.\n\nWould you like me to search for a different requirement ID, or check what requirements are available in the graph?",
+          "graph_tool_used": true,
+          "graph_tool_calls": 1,
+          "graph_tool_successes": 1,
+          "retrieved_record_count": 0,
+          "cypher_generation_attempts": 1,
+          "retry_reason": null,
+          "tool_error": null
+        },
+        "evaluation": {
+          "tool_selection_correct": true,
+          "tool_call_count_correct": true,
+          "tool_execution_success": true,
+          "answer_values_complete": true,
+          "no_result_handling_correct": true,
+          "fully_correct": true,
+          "missing_answer_values": []
+        }
+      },
+      {
+        "id": "AGT-006",
+        "question": "What is a Knowledge Graph?",
+        "response": {
+          "question": "What is a Knowledge Graph?",
+          "answer": "A **Knowledge Graph** is a structured representation of information that connects entities and relationships in a network format. It organizes data as interconnected nodes (entities) and edges (relationships), making it possible to:\n\n- **Store complex relationships** between entities (e.g., requirements link to tests, tests link to defects)\n- **Query and discover patterns** across the data\n- **Enable semantic reasoning** — understanding meaning beyond just keywords\n- **Support rich navigation** — exploring connections between related entities\n\nIn the context of this Bluetooth Reconnection project, the Knowledge Graph captures engineering entities like Requirements, SoftwareComponents, Tests, TestExecutions, Defects, and their relationships, enabling you to trace how features connect to tests, how tests connect to issues, and so forth. This provides visibility into the engineering workflow and dependencies.",
+          "graph_tool_used": false,
+          "graph_tool_calls": 0,
+          "graph_tool_successes": 0,
+          "retrieved_record_count": 0,
+          "cypher_generation_attempts": null,
+          "retry_reason": null,
+          "tool_error": null
+        },
+        "evaluation": {
+          "tool_selection_correct": true,
+          "tool_call_count_correct": true,
+          "tool_execution_success": true,
+          "answer_values_complete": true,
+          "no_result_handling_correct": true,
+          "fully_correct": true,
+          "missing_answer_values": []
+        }
+      },
+      {
+        "id": "AGT-007",
+        "question": "What can you help me investigate in this project?",
+        "response": {
+          "question": "What can you help me investigate in this project?",
+          "answer": "I can help investigate factual engineering data about the Bluetooth Reconnection project using the Knowledge Graph. Here's what I can assist with:\n\n**Engineering artifacts:**\n- Features and requirements\n- Software components and their relationships\n- Test cases and test executions\n- Test traces and defect tickets\n- Source systems integration\n\n**Analysis capabilities:**\n- Trace relationships between entities (e.g., which tests cover which requirements)\n- Filter and compare data (e.g., failed tests, defects by component)\n- Find patterns (e.g., frequently failing tests, defect clusters)\n- Count entities and relationships\n- Investigate traceability (e.g., requirements → tests → executions)\n\n**Ask me about:**\n- \"What tests are associated with [feature/requirement]?\"\n- \"Which defects are related to [component]?\"\n- \"How many test executions failed for [test case]?\"\n- \"What requirements are traced to [software component]?\"\n- \"Which tests failed in [specific execution]?\"\n- \"What's the relationship between [entity A] and [entity B]?\"\n\nJust frame your question around the engineering data you want to explore, and I'll retrieve the relevant facts from the Knowledge Graph.",
+          "graph_tool_used": false,
+          "graph_tool_calls": 0,
+          "graph_tool_successes": 0,
+          "retrieved_record_count": 0,
+          "cypher_generation_attempts": null,
+          "retry_reason": null,
+          "tool_error": null
+        },
+        "evaluation": {
+          "tool_selection_correct": true,
+          "tool_call_count_correct": true,
+          "tool_execution_success": true,
+          "answer_values_complete": true,
+          "no_result_handling_correct": true,
+          "fully_correct": true,
+          "missing_answer_values": []
+        }
+      },
+      {
+        "id": "AGT-008",
+        "question": "Hello!",
+        "response": {
+          "question": "Hello!",
+          "answer": "Hello! 👋 I'm here to help you with the Bluetooth Reconnection Knowledge Graph project. \n\nI can assist you by:\n- Retrieving factual engineering data from the knowledge graph (features, requirements, tests, defects, components, etc.)\n- Helping with code changes and tasks in your project\n\nWhat would you like to work on?",
+          "graph_tool_used": false,
+          "graph_tool_calls": 0,
+          "graph_tool_successes": 0,
+          "retrieved_record_count": 0,
+          "cypher_generation_attempts": null,
+          "retry_reason": null,
+          "tool_error": null
+        },
+        "evaluation": {
+          "tool_selection_correct": true,
+          "tool_call_count_correct": true,
+          "tool_execution_success": true,
+          "answer_values_complete": true,
+          "no_result_handling_correct": true,
+          "fully_correct": true,
+          "missing_answer_values": []
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+src/data/demo.json
+pnpm-lock.yaml
+dist
+node_modules
